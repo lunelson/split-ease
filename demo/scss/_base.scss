@@ -1,0 +1,125 @@
+// modern font-face support https://css-tricks.com/snippets/css/using-font-face/
+
+
+$gray: #5c5e66;
+$blue: #0a1433;
+$red: #C86464;
+$cyan: #17e6e6;
+$yellow: #FFC864;
+
+* { box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 1.25em;
+  background-color: $blue;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #A9AAAE;
+}
+
+#canvas {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'system-ui', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+a {
+  color: $red;
+  &:hover { color: $yellow; }
+}
+
+pre {
+  background-color: $gray;
+  padding: 1em;
+  color: black;
+}
+code {
+  // font-size: 1em;
+  // line-height: 1.5;
+  background-color: desaturate(lighten($blue, 4), 20);
+  padding: 0.2em 0.4em;
+  pre & { background: none; padding: 0; color: inherit; }
+}
+.trim { padding: 0.1px; background-color: rgba(100,100,100,0.2); }
+
+$inner-y: 1rem;
+#demo { padding: $inner-y*4 0 $inner-y*6; }
+
+.stack {
+  padding: 0.1px;
+  & > *+* {
+    margin-top: $inner-y * 1.25;
+  }
+}
+.stack--l {
+  padding: 0.1px;
+  & > *+* {
+    margin-top: $inner-y * 2.5;
+  }
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+  text-align: center;
+}
+
+h1 {
+  $lh: 1.3;
+  font-size: 1.7rem;
+  line-height: $lh;
+  margin-top: calc((1 - #{$lh}) * 0.5em);
+  margin-bottom: calc((1 - #{$lh}) * 0.5em);
+  .stack > *+& { margin-top: calc((1 - #{$lh}) * 0.5em + #{$inner-y}); }
+}
+
+h2 {
+  $lh: 1.4;
+  font-size: 1.3rem;
+  line-height: $lh;
+  margin-top: calc((1 - #{$lh}) * 0.5em);
+  margin-bottom: calc((1 - #{$lh}) * 0.5em);
+  .stack > *+& { margin-top: calc((1 - #{$lh}) * 0.5em + #{$inner-y}); }
+}
+
+h3 {
+  text-align: center;
+  $lh: 1.5;
+  font-size: 1.1rem;
+  line-height: $lh;
+  margin-top: calc((1 - #{$lh}) * 0.5em);
+  margin-bottom: calc((1 - #{$lh}) * 0.5em);
+  .stack > *+& { margin-top: calc((1 - #{$lh}) * 0.5em + #{$inner-y}); }
+}
+
+p {
+  $lh: 1.6;
+  font-size: 1rem;
+  line-height: $lh;
+  margin-top: calc((1 - #{$lh}) * 0.5em);
+  margin-bottom: calc((1 - #{$lh}) * 0.5em);
+  .stack > *+& { margin-top: calc((1 - #{$lh}) * 0.5em + $inner-y); }
+}
+
+.sect {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.copy, .code { width: 600px; }
+
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+.logo {
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}

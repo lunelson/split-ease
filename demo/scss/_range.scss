@@ -1,0 +1,91 @@
+/*
+  STYLING RANGE INPUTS
+  https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+  http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
+
+  AUTOMATED TOOL
+  http://danielstern.ca/range.css/#/
+ */
+
+input[type=range] {
+  appearance: none;
+  width: 100%;
+  /*margin: 9.5px 0;*/
+  display: block;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:disabled {
+  opacity: 0.25;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  background: #17A1E6;
+  border-radius: 0px;
+  border: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  border: none;
+  height: 20px;
+  width: 10px;
+  border-radius: 0px;
+  background: #17A1E6;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -9.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #17A1E6;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  background: #17A1E6;
+  border-radius: 0px;
+  border: none;
+}
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 20px;
+  width: 10px;
+  border-radius: 0px;
+  background: #17A1E6;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 1px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #17A1E6;
+  border: none;
+  border-radius: 0px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #17A1E6;
+  border: none;
+  border-radius: 0px;
+}
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 20px;
+  width: 10px;
+  border-radius: 0px;
+  background: #17A1E6;
+  cursor: pointer;
+  height: 1px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #17A1E6;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #17A1E6;
+}
