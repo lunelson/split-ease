@@ -1,8 +1,8 @@
 import times from 'lodash-es/times';
-import padEnd from 'lodash-es/padEnd';
-import debounce from 'lodash-es/debounce';
+// import padEnd from 'lodash-es/padEnd';
+// import debounce from 'lodash-es/debounce';
 
-import { easeGraph } from './js/ease-graph';
+import { easeGrapher } from './js/ease-graph';
 // import metaEase from '../../index';
 
 // // import {drawArrow} from './canvas-utilities';

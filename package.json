@@ -2,18 +2,31 @@
   "name": "@lunelson/split-ease",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/split-ease.cjs.js",
+  "module": "dist/split-ease.esm.js",
+  "browser": "dist/split-ease.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "node test/test.js",
+    "pretest": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "system-font-css": "^2.0.1"
+  },
+  "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "lodash": "^4.17.4",
     "lodash-es": "^4.17.4",
-    "system-font-css": "^2.0.1"
+    "rollup": "^0.53.3",
+    "rollup-plugin-buble": "^0.18.0",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "vue": "^2.5.13"
   }
 }

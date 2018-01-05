@@ -1,12 +1,12 @@
 
 // base functions, adapted from Penner equations c. 2001
-function lin(t, b, c, d) {
+export function lin(t, b, c, d) {
   return c * t / d + b;
 }
-function cos(t, b, c, d) {
+export function cos(t, b, c, d) {
   return c / -2 * (Math.cos(Math.PI * t / d) - 1) + b;
 }
-function pow(t, b, c, d, p) {
+export function pow(t, b, c, d, p) {
   return (t /= d / 2) < 1
     ? c / 2 * Math.pow(t, p) + b
     : c / -2 * (Math.pow(2 - t, p) - 2) + b;
@@ -35,9 +35,16 @@ export default function SplitEase(et1, et2 = Math.max(1 - et1, 0), opts = {}) {
   const ev2 = et2 > 0 ? 1 / (p2 / et2 - (p2 - 1) * (et1 / et2 + 1)) : 0;
 
 
-  return [et1, et2, p1, p2, ev1, ev2];
+  // return [et1, et2, p1, p2, ev1, ev2];
 
   return function(time) {
+    return time <= 0 ? 0 :
+      time > 1 ? 1 :
+        time <= et1 ?
+          fn1(time, 0, ev1 * 2, et1 * 2, p) :
+          time > (1 - et2) ?
+            fn2(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p) :
+            lin(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2)) ;
     // if (time <= 0) {
     //   return 0;
     // } else if (time > 1) {
@@ -50,14 +57,7 @@ export default function SplitEase(et1, et2 = Math.max(1 - et1, 0), opts = {}) {
     //   return lin(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2));
     // }
 
-    return time <= 0 ? 0 :
-      time > 1 ? 1 :
-        time <= et1 ?
-          fn1(time, 0, ev1 * 2, et1 * 2, p) :
-          time > (1 - et2) ?
-            fn2(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p) :
-            lin(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2)) ;
-  }
+  };
 }
 
 /*
