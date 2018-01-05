@@ -1,21 +1,29 @@
 
 @import "scss/fonts";
 @import "scss/base";
-@import "scss/ctrl";
 
-.code {
-
-  font-size: 1.25em;
-  // text-align: center;
-  padding: 0.75em 2em;
-  border: 1px solid #17A1E6;
-  color: #919399;
-  span { color: $gray; }
-  pre {
-    margin: 0;
-    // font-family: 'Inconsolata', monospace;
-    font-size: 22px;
-  }
+canvas {
+  // background-color: #eee;
+  // &.mini {
+  //   width: 200px;
+  //   height: 200px;
+  // }
 }
+// @import "scss/ctrl";
 
-.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+// .code {
+
+//   font-size: 1.25em;
+//   // text-align: center;
+//   padding: 0.75em 2em;
+//   border: 1px solid #17A1E6;
+//   color: #919399;
+//   span { color: $gray; }
+//   pre {
+//     margin: 0;
+//     // font-family: 'Inconsolata', monospace;
+//     font-size: 22px;
+//   }
+// }
+
+// .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}

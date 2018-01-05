@@ -12,10 +12,10 @@ $yellow: #FFC864;
 html {
   box-sizing: border-box;
   font-size: 1.25em;
-  background-color: $blue;
+  // background-color: $blue;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #A9AAAE;
+  // color: #A9AAAE;
 }
 
 #canvas {
@@ -65,8 +65,8 @@ $inner-y: 1rem;
 }
 
 h1, h2, h3 {
-  font-weight: normal;
-  text-align: center;
+  // font-weight: normal;
+  // text-align: center;
 }
 
 h1 {

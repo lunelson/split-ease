@@ -1,18 +1,18 @@
 
 // base functions, adapted from Penner equations c. 2001
-export function lin(t, b, c, d) {
+export function linear(t, b, c, d) {
   return c * t / d + b;
 }
-export function cos(t, b, c, d) {
+export function cosine(t, b, c, d) {
   return c / -2 * (Math.cos(Math.PI * t / d) - 1) + b;
 }
-export function pow(t, b, c, d, p) {
+export function power(t, b, c, d, p) {
   return (t /= d / 2) < 1
     ? c / 2 * Math.pow(t, p) + b
     : c / -2 * (Math.pow(2 - t, p) - 2) + b;
 }
 
-export default function SplitEase(et1, et2 = Math.max(1 - et1, 0), opts = {}) {
+export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = {}) {
 
   // resolve positional args
   if (typeof et2 == 'object') { opts = et2; et2 = Math.max(1 - et1, 0); }
@@ -27,8 +27,8 @@ export default function SplitEase(et1, et2 = Math.max(1 - et1, 0), opts = {}) {
 
   // resolve ease curves and displacements
   const { pow = 2, powIn = pow, powOut = pow, sin, sinIn = sin, sinOut = sin } = opts;
-  const fn1 = sinIn ? cos : pow;
-  const fn2 = sinOut ? cos : pow;
+  const fn1 = sinIn ? cosine : power;
+  const fn2 = sinOut ? cosine : power;
   const p1 = sinIn ? Math.PI / 2 : powIn;
   const p2 = sinOut ? Math.PI / 2 : powOut;
   const ev1 = et1 > 0 ? 1 / (p1 / et1 - (p1 - 1) * (et2 / et1 + 1)) : 0;
@@ -41,10 +41,10 @@ export default function SplitEase(et1, et2 = Math.max(1 - et1, 0), opts = {}) {
     return time <= 0 ? 0 :
       time > 1 ? 1 :
         time <= et1 ?
-          fn1(time, 0, ev1 * 2, et1 * 2, p) :
+          fn1(time, 0, ev1 * 2, et1 * 2, p1) :
           time > (1 - et2) ?
-            fn2(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p) :
-            lin(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2)) ;
+            fn2(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p2) :
+            linear(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2)) ;
     // if (time <= 0) {
     //   return 0;
     // } else if (time > 1) {

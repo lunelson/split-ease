@@ -18,46 +18,43 @@ export function easeGraph(ctx, easeFn, x, y, width, height, speedStyle, accelSty
 
   // TRANSLATION, SCALE
   ctx.translate(x, y + height); // translate to bottom-left corner
-  ctx.scale(width, -height); // scale area to 1:1, y-flipped
-  ctx.lineWidth = ctx.lineWidth / width; // scale lineWidth back down
+  ctx.scale(1, -1); // flip Y
 
   // SPEED GRAPH
   ctx.strokeStyle = speedStyle;
   ctx.beginPath();
   for (let p = 0; p < width; p++) {
     // NB function accepts Adobe-style arguments to0
-    currPoint = [p/width, easeFn(p/width, 0, 1, 1)];
-    if (p === 0) {
-      ctx.moveTo(...currPoint);
-      prevPoint = currPoint;
-    } else {
-      slope = (currPoint[1] - prevPoint[1])/(currPoint[0] - prevPoint[0]);
-      prevPoint = currPoint;
-      ctx.lineTo(...currPoint);
-      slopes.push(slope);
-    }
+    currPoint = [p, easeFn(p/width, 0, 1, 1) * height];
+    ctx[p == 0 ? 'moveTo' : 'lineTo'](...currPoint);
+    if (prevPoint) slopes.push((currPoint[1] - prevPoint[1])/(currPoint[0] - prevPoint[0]));
+    // if (p === 0) {
+    //   ctx.moveTo(...currPoint);
+    //   // prevPoint = currPoint;
+    // } else {
+    //   slope = (currPoint[1] - prevPoint[1])/(currPoint[0] - prevPoint[0]);
+    //   ctx.lineTo(...currPoint);
+    //   slopes.push(slope);
+    // }
+    prevPoint = currPoint;
   }
   ctx.stroke();
 
   // ACCEL GRAPH
+  var maxSlope = Math.max(...slopes);
   ctx.strokeStyle = accelStyle;
   ctx.beginPath();
-  var maxSlope = Math.max(...slopes);
   for (let s = 0; s < width; s++) {
-    if (s === 0) {
-      ctx.moveTo(s/width, slopes[s]/maxSlope * ACCEL_GRAPH_HEIGHT);
-    } else {
-      ctx.lineTo(s/width, slopes[s]/maxSlope * ACCEL_GRAPH_HEIGHT);
-    }
+    currPoint = [s, slopes[s]/maxSlope * ACCEL_GRAPH_HEIGHT * height];
+    ctx[s == 0 ? 'moveTo' : 'lineTo'](...currPoint);
+    // if (s === 0) {
+    //   ctx.moveTo(...currPoint);
+    // } else {
+    //   ctx.lineTo(...currPoint);
+    // }
   }
   ctx.stroke();
 
   // RESTORE
   ctx.restore();
 }
-
-import { cos } from './index';
-const ctx = 'dummy';
-
-ctx.lineWidth = 3;
-easeGraph(ctx, cos, 0, 0, 200, 200, 'rgb(200, 100, 100)', 'rgb(255,200,100)');
