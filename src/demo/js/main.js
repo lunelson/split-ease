@@ -1,5 +1,9 @@
-import SplitEase from '../index';
-import { easeGraph } from './js/graphing';
+// window.process.env = 'development';
+
+import SplitEase from '../../index';
+
+// import Vue from './lib/vue';
+import { easeGraph } from './graphing';
 import {
   linear,
   easeInQuad,
@@ -17,16 +21,18 @@ import {
   easeInSine,
   easeOutSine,
   easeInOutSine
-} from './js/penners';
+} from './lib/penner';
 
 // VUE interactions
+// NB see this for vue builds https://vuejs.org/v2/guide/installation.html#Explanation-of-Different-Builds
+
 
 const mainCanvas = document.querySelector('canvas.maxi');
 mainCanvas.width = 600;
 mainCanvas.height = 300;
 
 const mainCTX = mainCanvas.getContext('2d');
-const mainEase = SplitEase(0.3, {powIn: 3});
+const mainEase = SplitEase(0.3, 0.2, {pow: 3});
 mainCTX.lineWidth = 2.5;
 easeGraph(mainCTX, mainEase, 10, 10, 600 - 20, 300 - 20, 'rgb(200, 100, 100)', 'rgb(255,200,100)');
 

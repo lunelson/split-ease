@@ -1,12 +1,22 @@
+//  _____       _ _ _   _____
+// /  ___|     | (_) | |  ___|
+// \ `--. _ __ | |_| |_| |__  __ _ ___  ___
+//  `--. \ '_ \| | | __|  __|/ _` / __|/ _ \
+// /\__/ / |_) | | | |_| |__| (_| \__ \  __/
+// \____/| .__/|_|_|\__\____/\__,_|___/\___|
+//       | |
+//       |_|
 
-// base functions, adapted from Penner equations c. 2001
-export function linear(t, b, c, d) {
+// base functions, adapted from Penner c. 2001
+function linear(t, b, c, d) {
   return c * t / d + b;
 }
-export function cosine(t, b, c, d) {
+
+function cosine(t, b, c, d) {
   return c / -2 * (Math.cos(Math.PI * t / d) - 1) + b;
 }
-export function power(t, b, c, d, p) {
+
+function power(t, b, c, d, p) {
   return (t /= d / 2) < 1
     ? c / 2 * Math.pow(t, p) + b
     : c / -2 * (Math.pow(2 - t, p) - 2) + b;
@@ -26,13 +36,17 @@ export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = 
   et2 *= eScale;
 
   // resolve ease curves and displacements
-  const { pow = 2, powIn = pow, powOut = pow, sin, sinIn = sin, sinOut = sin } = opts;
-  const fn1 = sinIn ? cosine : power;
-  const fn2 = sinOut ? cosine : power;
-  const p1 = sinIn ? Math.PI / 2 : powIn;
-  const p2 = sinOut ? Math.PI / 2 : powOut;
-  const ev1 = et1 > 0 ? 1 / (p1 / et1 - (p1 - 1) * (et2 / et1 + 1)) : 0;
-  const ev2 = et2 > 0 ? 1 / (p2 / et2 - (p2 - 1) * (et1 / et2 + 1)) : 0;
+  const { pow = 2, sin } = opts;
+  const curve = sin ? cosine : power;
+  const p = sin ? Math.PI / 2 : pow;
+  const ev1 = et1 > 0 ? 1 / (p / et1 - (p - 1) * (et2 / et1 + 1)) : 0;
+  const ev2 = et2 > 0 ? 1 / (p / et2 - (p - 1) * (et1 / et2 + 1)) : 0;
+  // const fn1 = sinIn ? cosine : power;
+  // const fn2 = sinOut ? cosine : power;
+  // const p1 = sinIn ? Math.PI / 2 : powIn;
+  // const p2 = sinOut ? Math.PI / 2 : powOut;
+  // const ev1 = et1 > 0 ? 1 / (p1 / et1 - (p1 - 1) * (et2 / et1 + 1)) : 0;
+  // const ev2 = et2 > 0 ? 1 / (p2 / et2 - (p2 - 1) * (et1 / et2 + 1)) : 0;
 
 
   // return [et1, et2, p1, p2, ev1, ev2];
@@ -41,9 +55,9 @@ export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = 
     return time <= 0 ? 0 :
       time > 1 ? 1 :
         time <= et1 ?
-          fn1(time, 0, ev1 * 2, et1 * 2, p1) :
+          curve(time, 0, ev1 * 2, et1 * 2, p) :
           time > (1 - et2) ?
-            fn2(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p2) :
+            curve(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p) :
             linear(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2)) ;
     // if (time <= 0) {
     //   return 0;
@@ -64,9 +78,9 @@ export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = 
   LICENSES
 
   ----
-  META-EASE
+  SPLIT-EASE
   Open source under the ISC License (ISC)
-  Copyright (c) 2018 Lu Nelson
+  Copyright (c) 2017 Lu Nelson
 
   Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
