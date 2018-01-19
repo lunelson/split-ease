@@ -7,6 +7,20 @@
 //       | |
 //       |_|
 
+/*
+  TODO: ERRORs
+
+  // required args in ES6
+  https://egghead.io/lessons/javascript-required-function-arguments-in-javascript
+
+  // RangeErrors
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError
+
+  // ReferenceErrors
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError
+
+*/
+
 // base functions, adapted from Penner c. 2001
 function linear(t, b, c, d) {
   return c * t / d + b;
