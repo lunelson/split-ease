@@ -1,13 +1,42 @@
 
-@import "fonts";
-@import "base";
+@import "_scss/fonts";
+@import "_scss/base";
 
 canvas {
-  // background-color: #eee;
+  background-color: #eee;
   // &.mini {
   //   width: 200px;
   //   height: 200px;
   // }
+}
+
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {}
+
+input {
+  appearance: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  &:focus {
+    outline: none;
+  }
+  &[type="range"] {
+    // background-color: blue;
+  }
+}
+
+select {
+  appearance: none;
+  border: none;
+  background: none;
+  outline: none;
 }
 // @import "scss/ctrl";
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Canvas Example</title>
+		<style>
+			canvas {
+				border: 3px #CCC solid;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<canvas id="myCanvas" height="450" width="450"></canvas>
+		</div>
+	<script src="http://kirupa.googlecode.com/svn/trunk/easing.js"></script>
+    <script>
+		var mainCanvas = document.getElementById("myCanvas");
+		var mainContext = mainCanvas.getContext('2d');
+
+		var canvasWidth = mainCanvas.width;
+		var canvasHeight = mainCanvas.height;
+
+
+		var requestAnimationFrame = window.requestAnimationFrame ||
+									window.mozRequestAnimationFrame ||
+									window.webkitRequestAnimationFrame ||
+									window.msRequestAnimationFrame;
+
+		var iteration = 0;
+		var totalIterations = 90;
+
+		function drawCircle() {
+			mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+
+			// color in the background
+			mainContext.fillStyle = "#EEEEEE";
+			mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+
+			// draw the circle
+			mainContext.beginPath();
+
+			var newPos = easeInOutExpo(iteration, -100, 650, totalIterations);
+
+			mainContext.arc(newPos, 225, 100, 0, Math.PI * 2, false);
+			mainContext.closePath();
+
+			// color in the circle
+			mainContext.fillStyle = "#006699";
+			mainContext.fill();
+
+			if (iteration < totalIterations) {
+				iteration += .5;
+			} else {
+				iteration = 0;
+			}
+
+			requestAnimationFrame(drawCircle);
+		}
+		drawCircle();
+    </script>
+	</body>
+</html>
