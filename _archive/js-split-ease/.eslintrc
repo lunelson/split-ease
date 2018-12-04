@@ -1,0 +1,12 @@
+{
+    "plugins": ["babel"],
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true,
+        "commonjs": true
+    }
+}
