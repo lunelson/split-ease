@@ -23,6 +23,7 @@
     "terser:module": "terser dist/split-ease.esm.js -o dist/split-ease.esm.min.js",
     "links": "npm link @lunelson/penny @lunelson/homework",
     "start": "nodemon --watch penny.config.js node_modules/.bin/penny serve .",
+    "test:watch": "jest --watch",
     "test": "jest"
   },
   "devDependencies": {
@@ -30,8 +31,10 @@
     "@babel/preset-env": "^7.1.6",
     "@lunelson/penny": "github:lunelson/penny#next",
     "babel-loader": "^8.0.4",
+    "eases": "^1.0.8",
     "jest": "^23.6.0",
     "nodemon": "^1.18.7",
+    "ow": "^0.8.0",
     "rollup": "^0.67.3",
     "rollup-plugin-babel": "^4.0.3",
     "terser": "^3.10.13",
@@ -39,5 +42,11 @@
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   },
-  "browserslist": "[]"
+  "browserslist": ">1%",
+  "dependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint-plugin-jest": "^22.1.1",
+    "regenerator-runtime": "^0.13.1"
+  }
 }

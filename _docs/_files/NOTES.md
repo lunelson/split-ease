@@ -17,6 +17,7 @@ They can be seen at such places
 
 Split-Ease wraps up the core Penner equations in to a single simpler API, while offering the ability to time the in and out segments of the ease separately, even in combination with a middle constant-speed segment.
 
+Covers the sine and power curves from Penner's original set (everything except back bounce elastic and circ expo variants).
 
 
 ## references

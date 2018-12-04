@@ -21,8 +21,10 @@ function power(t, b, c, d, p) {
     c / -2 * (Math.pow(2 - t, p) - 2) + b;
 }
 
+// NOTE: possibly no need to use Math.max when parsing args, it's done on the next line anyway
 export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = {}) {
 
+  // NOTE: possibly no need to use Math.max when parsing args, it's done on the next line anyway
   if (typeof et2 == 'object') { opts = et2; et2 = Math.max(1 - et1, 0); }
 
   et1 = Math.max(et1, 0);

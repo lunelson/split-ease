@@ -40,11 +40,7 @@ export default [
 			{ banner, footer, file: pkg.browser.replace(/\.min/,''), format: 'iife', name: 'SplitEase' },
 		],
 		plugins: [
-			babel({
-				babelrc: false,
-				presets: [['@babel/preset-env', { modules: false }]],
-				exclude: ['node_modules/**']
-			}),
+			babel(),
 		]
 	}
 ];

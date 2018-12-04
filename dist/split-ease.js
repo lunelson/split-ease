@@ -37,12 +37,45 @@ var SplitEase = (function () {
   function power(t, b, c, d, p) {
     return (t /= d / 2) < 1 ? c / 2 * Math.pow(t, p) + b : c / -2 * (Math.pow(2 - t, p) - 2) + b;
   }
+  /*
+    JS Built In GLobals
+
+    TypeError(msg) -- wrong type
+    RangeError(msg) -- wrong range
+    Error
+
+    Object
+    Number
+    Boolean
+
+  et1, et2
+    - must Numbers > 0
+    - should be < 1; if not will be clipped
+    - exception is et1 and et2 both greater than 1, in which they will be scaled
+
+  options
+    must be an Object
+    pow -> Number; 1 < pow < 6
+    sin -> Boolean; overrides pow
+
+  [
+    [0.25],
+    [0.25, 0.25],
+    [0.25, { sin: true }]
+    [0.25, { pow: 3 }]
+    [0.25, 0.25, { sin: true }]
+  ]
+
+  */
+  // NOTE: possibly no need to use Math.max when parsing args, it's done on the next line anyway
+
 
   function SplitEase() {
     var et1 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.5;
     var et2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Math.max(1 - et1, 0);
     var opts = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
+    // NOTE: possibly no need to use Math.max when parsing args, it's done on the next line anyway
     if (_typeof(et2) == 'object') {
       opts = et2;
       et2 = Math.max(1 - et1, 0);
