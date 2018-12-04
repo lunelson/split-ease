@@ -21,15 +21,39 @@ function power(t, b, c, d, p) {
     c / -2 * (Math.pow(2 - t, p) - 2) + b;
 }
 
-// NOTE: possibly no need to use Math.max when parsing args, it's done on the next line anyway
+function isPojo(value) {
+  if (typeof value !== 'object') { return false; }
+  if (Object.prototype.toString.call(value) !== '[object Object]') { return false; }
+  switch (Object.getPrototypeOf(value)) {
+    case Object.prototype: { return true; }
+    case null: { return true; }
+    default: { return false; }
+  }
+}
+
 export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = {}) {
 
-  // NOTE: possibly no need to use Math.max when parsing args, it's done on the next line anyway
+  // adjust re positional args
   if (typeof et2 == 'object') { opts = et2; et2 = Math.max(1 - et1, 0); }
 
-  et1 = Math.max(et1, 0);
+  // check lower ranges
+  if (et1 < 0) throw new RangeError(`SplitEase: ease-in ratio must be > 0; received ${et1}`);
+  if (et2 < 0) throw new RangeError(`SplitEase: ease-out ratio must be > 0; received ${et2}`);
+
+  // check types
+  if (typeof et1 != 'number') throw new TypeError(`SplitEase: ease-in ratio must be a number; received ${et1}`);
+  if (typeof et2 != 'number') throw new TypeError(`SplitEase: ease-out ratio must be a number; received ${et2}`);
+  if (!isPojo(opts)) throw new TypeError('SplitEase: options argument must be a plain object');
+
+  // et1 = Math.max(et1, 0);
   et2 = Math.max(et2, 0);
   const eSum = et1 + et2;
+
+  // check upper ranges
+  if (et1 > 1) console.warn(`SplitEase: ease-in ratio > 1 [${et1}]; ease-in/-out ratios will both be scaled down`);
+  else if (et2 > 1) console.warn(`SplitEase: ease-out ratio > 1 [${et2}]; ease-in/-out ratios will both be scaled down`);
+  else if (eSum > 1) console.warn(`SplitEase: total easing ratio > 1 [${eSum}]; ease-in/-out ratios will both be scaled down`);
+
   const eScale = eSum > 1 ? 1 / eSum : 1;
   et1 *= eScale;
   et2 *= eScale;
