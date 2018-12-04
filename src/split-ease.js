@@ -31,25 +31,21 @@ function isPojo(value) {
   }
 }
 
-export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = {}) {
+export default function SplitEase(et1, et2, opts) {
 
-  // adjust re positional args
-  if (typeof et2 == 'object') { opts = et2; et2 = Math.max(1 - et1, 0); }
+  if (typeof et2 == 'object') { opts = et2; et2 = undefined; }
+  if (et1 != undefined && et1 < 0) throw new RangeError(`SplitEase: ease-in ratio must be > 0; received ${et1}`);
+  if (et2 != undefined && et2 < 0) throw new RangeError(`SplitEase: ease-out ratio must be > 0; received ${et2}`);
+  if (et1 != undefined && typeof et1 != 'number') throw new TypeError(`SplitEase: ease-in ratio must be a number; received ${et1}`);
+  if (et2 != undefined && typeof et2 != 'number') throw new TypeError(`SplitEase: ease-out ratio must be a number; received ${et2}`);
+  if (opts != undefined && !isPojo(opts)) throw new TypeError(`SplitEase: options must be a plain object; received ${opts}`);
 
-  // check lower ranges
-  if (et1 < 0) throw new RangeError(`SplitEase: ease-in ratio must be > 0; received ${et1}`);
-  if (et2 < 0) throw new RangeError(`SplitEase: ease-out ratio must be > 0; received ${et2}`);
+  et1 = (et1 == undefined) ? 0.5 : et1;
+  et2 = (et2 == undefined) ? Math.max(1 - et1, 0) : et2;
+  opts = (opts == undefined) ? { pow: 2 } : opts;
 
-  // check types
-  if (typeof et1 != 'number') throw new TypeError(`SplitEase: ease-in ratio must be a number; received ${et1}`);
-  if (typeof et2 != 'number') throw new TypeError(`SplitEase: ease-out ratio must be a number; received ${et2}`);
-  if (!isPojo(opts)) throw new TypeError('SplitEase: options argument must be a plain object');
-
-  // et1 = Math.max(et1, 0);
-  et2 = Math.max(et2, 0);
   const eSum = et1 + et2;
 
-  // check upper ranges
   if (et1 > 1) console.warn(`SplitEase: ease-in ratio > 1 [${et1}]; ease-in/-out ratios will both be scaled down`);
   else if (et2 > 1) console.warn(`SplitEase: ease-out ratio > 1 [${et2}]; ease-in/-out ratios will both be scaled down`);
   else if (eSum > 1) console.warn(`SplitEase: total easing ratio > 1 [${eSum}]; ease-in/-out ratios will both be scaled down`);
@@ -58,7 +54,7 @@ export default function SplitEase(et1 = 0.5, et2 = Math.max(1 - et1, 0), opts = 
   et1 *= eScale;
   et2 *= eScale;
 
-  const { pow = 2, sin } = opts;
+  const { pow, sin } = opts;
   const curve = sin ? cosine : power;
   const p = sin ? Math.PI / 2 : pow;
   const ev1 = et1 > 0 ? 1 / (p / et1 - (p - 1) * (et2 / et1 + 1)) : 0;

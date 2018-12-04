@@ -28,7 +28,7 @@ test('throw type errors, when arg types are wrong', () => {
 	});
 });
 
-test('console.warn about scaling, when durations exceed 1', () => {
+test('console.warn about scaling, when ratios exceed 1', () => {
 
 	// mocking console:
 	// https://stackoverflow.com/a/41224462/1204994 (see comments)

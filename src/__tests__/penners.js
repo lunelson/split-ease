@@ -21,10 +21,11 @@ const PennerSplitEases = {
 	'sineOut': SplitEase(0, { sin: true }),
 };
 
-test('match penner equivalents, to tenth decimal', () => {
-
+describe('match penner equivalent to tenth decimal', () => {
   Object.keys(PennerSplitEases).forEach(key => {
-    const t = Math.random();
-    expect(PennerSplitEases[key](t) - PennerEases[key](t)).toBeCloseTo(0, 10);
+		test(key, () => {
+			const t = Math.random();
+			expect(PennerSplitEases[key](t) - PennerEases[key](t)).toBeCloseTo(0, 10);
+		});
   });
 });
