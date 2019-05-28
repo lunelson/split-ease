@@ -62,14 +62,14 @@ export default function SplitEase(et1, et2, opts) {
   const ev1 = et1 > 0 ? 1 / (p / et1 - (p - 1) * (et2 / et1 + 1)) : 0;
   const ev2 = et2 > 0 ? 1 / (p / et2 - (p - 1) * (et1 / et2 + 1)) : 0;
 
-  return function (time) {
+  return function(time) {
     return time <= 0 ? 0 :
       time > 1 ? 1 :
         time <= et1 ?
           curve(time, 0, ev1 * 2, et1 * 2, p) :
           time > (1 - et2) ?
             curve(time - (1 - et2 * 2), 1 - ev2 * 2, ev2 * 2, et2 * 2, p) :
-            linear(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2));
+            linear(time - et1, ev1, 1 - (ev1 + ev2), 1 - (et1 + et2)) ;
 
   };
 }

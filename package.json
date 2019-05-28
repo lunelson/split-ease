@@ -1,52 +1,77 @@
 {
-  "name": "@lunelson/split-ease",
+  "name": "split-ease",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "license": "ISC",
-  "author": "Lu Nelson",
-  "homepage": "",
-  "bugs": "",
+  "description": "The easing curve with a beginning, middle and end",
   "files": [
-    "dist"
+    "dist/*"
   ],
-  "main": "dist/split-ease.common.min.js",
-  "module": "dist/split-ease.esm.min.js",
-  "browser": "dist/split-ease.min.js",
+  "keywords": [
+    "ease",
+    "easing",
+    "animation",
+    "penner",
+    "equation",
+    "javascript"
+  ],
+  "homepage": "https://split-ease.js.org/",
+  "bugs": "https://github.com/lunelson/split-ease/issues",
+  "license": "ISC",
+  "author": "Lu Nelson <hello@lunelson.xyz> (http://lunelson.xyz/)",
+  "esnext": "src/split-ease.js",
+  "source": "src/split-ease.js",
+  "main": "dist/split-ease.js",
+  "module": "dist/split-ease.mjs",
+  "umd:main": "dist/split-ease.umd.js",
+  "unpkg": "dist/split-ease.umd.js",
   "scripts": {
-    "build": "npm run rollup && npm run terser",
-    "rollup": "rollup -c",
-    "webpack": "webpack -p",
-    "terser": "npm run terser:main & npm run terser:module & npm run terser:browser",
-    "terser:browser": "terser dist/split-ease.js -o dist/split-ease.min.js",
-    "terser:main": "terser dist/split-ease.common.js -o dist/split-ease.common.min.js",
-    "terser:module": "terser dist/split-ease.esm.js -o dist/split-ease.esm.min.js",
-    "links": "npm link @lunelson/penny @lunelson/homework",
-    "start": "nodemon --watch penny.config.js node_modules/.bin/penny serve .",
-    "test:watch": "jest --watch",
-    "test": "jest"
+    "build": "pack build",
+    "bundle": "microbundle",
+    "publish": "pack publish",
+    "start": "penny serve web",
+    "test": "ava"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "@lunelson/penny": "github:lunelson/penny#next",
-    "babel-loader": "^8.0.4",
+    "@lunelson/homework": "^2.0.0-alpha.2",
+    "@lunelson/penny": "^2.0.0-alpha.11",
+    "@lunelson/sass-calc": "^1.2.0",
+    "@lunelson/sass-maps-next": "^1.0.0",
+    "@lunelson/sass-throw": "^2.1.0",
+    "@lunelson/sass-u": "^0.11.0",
+    "@pika/pack": "^0.3.7",
+    "@pika/plugin-build-node": "^0.4.0",
+    "@pika/plugin-build-types": "^0.4.0",
+    "@pika/plugin-build-web": "^0.4.0",
+    "@pika/plugin-standard-pkg": "^0.4.0",
+    "ava": "^1.4.1",
     "eases": "^1.0.8",
-    "jest": "^23.6.0",
-    "nodemon": "^1.18.7",
-    "ow": "^0.8.0",
-    "rollup": "^0.67.3",
-    "rollup-plugin-babel": "^4.0.3",
-    "terser": "^3.10.13",
-    "vue": "^2.5.17",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-ava": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "mathsass": "^0.10.1",
+    "microbundle": "^0.11.0"
   },
   "browserslist": ">1%",
-  "dependencies": {
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "eslint-plugin-jest": "^22.1.1",
-    "regenerator-runtime": "^0.13.1"
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-standard-pkg",
+        {
+          "exclude": [
+            "__quokka__/**/*",
+            "__tests__/**/*"
+          ]
+        }
+      ],
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-types"
+      ]
+    ]
   }
 }

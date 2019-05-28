@@ -2,10 +2,14 @@ import SplitEase from '../split-ease.js';
 
 test('throw range errors, if any ease time < 0', () => {
 	[
+		// et1 < 1
 		[-0.1],
 		[-0.1, {}],
+		//  et2 < 1
 		[0.3, -0.1],
 		[0.3, -0.1, {}],
+		// pow < 1
+		[0.3, 0.3, { pow: 0.5 }],
 	].forEach(args => {
 		expect(() => {
 			SplitEase.apply(null, args);
@@ -15,11 +19,14 @@ test('throw range errors, if any ease time < 0', () => {
 
 test('throw type errors, when arg types are wrong', () => {
 	[
+		// et1 invalid
 		[{}],
 		['pow'],
 		[{}],
+		// et2 invalid
 		[0.3, 'pow'],
 		[0.3, 0.3, 'pow'],
+		// opts invalid
 		[0.3, 0.3, 0.3],
 	].forEach(args => {
 		expect(() => {
@@ -37,14 +44,16 @@ test('console.warn about scaling, when ratios exceed 1', () => {
 		.mockImplementation(() => {});
 
 		[
-		// et1, et2
+		// et1, et2 > 1
 		[1.1],
 		[1.1, {}],
 		[0.3, 1.1],
 		[0.3, 1.1, {}],
-		// eSum
+		// eSum > 1
 		[0.3, 0.8],
 		[0.3, 0.8, {}],
+		// pow > 5
+		[0.3, 0.3, { pow: 5.5 }],
 	].forEach((args, i) => {
 
 		SplitEase.apply(null, args);
