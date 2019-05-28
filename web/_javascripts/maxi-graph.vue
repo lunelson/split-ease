@@ -29,10 +29,8 @@
 
 
 </template><script>
-
-
 // import SplitEase from '../../../src/index.js';
-import SplitEase from '../../dist/split-ease.esm.js';
+import SplitEase from '../../';
 import { easeGraph } from './graphing.js';
 
 export default {
@@ -43,30 +41,41 @@ export default {
       easeIn: 0.3,
       easeOut: 0.3,
       type: 'pow',
-      pow: 2
-    }
+      pow: 2,
+    };
   },
   computed: {
     easeOut2: {
-      get() { return this.pattern == 'midpoint' ? 1 - this.easeIn : this.easeOut; },
-      set(n) { this.easeOut = n; }
+      get() {
+        return this.pattern == 'midpoint' ? 1 - this.easeIn : this.easeOut;
+      },
+      set(n) {
+        this.easeOut = n;
+      },
     },
-    sin() { return this.type == 'sin'; },
+    sin() {
+      return this.type == 'sin';
+    },
     argList() {
       const opts = {};
       opts[this.type] = this[this.type];
       const times = this.pattern == 'midpoint' ? [this.easeIn] : [this.easeIn, this.easeOut];
       return [...times, opts];
     },
-    easeFn() { return SplitEase(...this.argList); }
+    easeFn() {
+      return SplitEase(...this.argList);
+    },
   },
   methods: {
     draw() {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      easeGraph(this.ctx, this.easeFn, 10, 10, 600 - 20, 300 - 20, 'rgb(200, 100, 100)', 'rgb(255,200,100)'); }
+      easeGraph(this.ctx, this.easeFn, 10, 10, 600 - 20, 300 - 20, 'rgb(200, 100, 100)', 'rgb(255,200,100)');
+    },
   },
   watch: {
-    argList() { this.draw(); }
+    argList() {
+      this.draw();
+    },
   },
   mounted() {
     this.canvas = this.$el.querySelector('canvas');
@@ -75,8 +84,6 @@ export default {
     this.ctx = this.canvas.getContext('2d');
     this.ctx.lineWidth = 2.5;
     this.draw();
-  }
-}
-
-
+  },
+};
 </script>

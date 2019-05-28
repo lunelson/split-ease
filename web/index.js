@@ -2,7 +2,7 @@
 
 // import SplitEase from '../src/index';
 
-import { easeGraph } from './_js/graphing';
+import { easeGraph } from './_javascripts/graphing';
 import {
   linear,
   easeInQuad,
@@ -20,11 +20,11 @@ import {
   easeInSine,
   easeOutSine,
   easeInOutSine
-} from './_js/lib/penner';
+} from './_javascripts/lib/penner';
 
 import Vue from 'vue';
 
-import MaxiGraph from './_js/maxi-graph.vue';
+import MaxiGraph from './_javascripts/maxi-graph.vue';
 export const desktopSideVM = new Vue({ render: h => h(MaxiGraph), }).$mount('#maxi-graph');
 
 
@@ -98,6 +98,6 @@ document.querySelectorAll('.curve-set').forEach((set, i) => {
     const s = 2;
 
     ctx.lineWidth = s;
-    easeGraph(ctx, curveSets[i][j], s, s, 200 - 2*s, 100 - 2*s, 'rgb(200, 100, 100)', 'rgb(255,200,100)');
+    easeGraph(ctx, curveSets[i][j], s, s, 200 - 2 * s, 100 - 2 * s, 'rgb(200, 100, 100)', 'rgb(255,200,100)');
   });
 });

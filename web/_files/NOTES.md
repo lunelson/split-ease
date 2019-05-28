@@ -1,6 +1,13 @@
 # Split Ease
 
-The JavaScript easing curve with a beginning, middle and end.
+## taglines
+
+The easing curve with a beginning, middle and end
+The easing curve that's actually easy
+
+## position
+
+
 
 ## why
 

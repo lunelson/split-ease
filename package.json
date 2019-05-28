@@ -25,8 +25,8 @@
   "unpkg": "dist/split-ease.umd.js",
   "scripts": {
     "build": "pack build",
-    "bundle": "microbundle",
-    "publish": "pack publish",
+    "bundle": "npx microbundle && npx auto-changelog",
+    "publish": "npx np",
     "start": "penny serve web",
     "test": "ava"
   },
@@ -48,8 +48,7 @@
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-ava": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "mathsass": "^0.10.1",
-    "microbundle": "^0.11.0"
+    "mathsass": "^0.10.1"
   },
   "browserslist": ">1%",
   "@pika/pack": {
