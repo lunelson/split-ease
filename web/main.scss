@@ -2,6 +2,10 @@
 @import "_scss/fonts";
 @import "_scss/base";
 
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 canvas {
   background-color: #eee;
   // &.mini {
