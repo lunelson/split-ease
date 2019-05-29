@@ -1,7 +1,7 @@
 {
   "name": "split-ease",
   "version": "1.0.0",
-  "description": "The easing curve with a beginning, middle and end",
+  "description": "JavaScript easing/interpolation function with infinitely independently variable in/out timing and curvature",
   "files": [
     "dist/*"
   ],
@@ -9,8 +9,11 @@
     "ease",
     "easing",
     "animation",
+    "interpolation",
     "penner",
+    "curve",
     "equation",
+    "algorithm",
     "javascript"
   ],
   "homepage": "https://split-ease.js.org/",
@@ -31,12 +34,7 @@
     "test": "ava"
   },
   "devDependencies": {
-    "@lunelson/homework": "^2.0.0-alpha.2",
-    "@lunelson/penny": "^2.0.0-alpha.11",
-    "@lunelson/sass-calc": "^1.2.0",
-    "@lunelson/sass-maps-next": "^1.0.0",
-    "@lunelson/sass-throw": "^2.1.0",
-    "@lunelson/sass-u": "^0.11.0",
+    "@lunelson/dogfood": "^1.0.2",
     "@pika/pack": "^0.3.7",
     "@pika/plugin-build-node": "^0.4.0",
     "@pika/plugin-build-types": "^0.4.0",
@@ -47,8 +45,7 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-ava": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "mathsass": "^0.10.1"
+    "eslint-plugin-prettier": "^3.1.0"
   },
   "browserslist": ">1%",
   "@pika/pack": {

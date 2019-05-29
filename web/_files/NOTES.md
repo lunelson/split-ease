@@ -7,14 +7,64 @@ The easing curve that's actually easy
 
 ## position
 
+### LFPS / sitnik recommendations
+
+Split Ease is
+  a JavaScript function
+that gives, helps
+  animators, creative-coders
+with
+  refine control
+  infinite control over the curvature and timing of their interpolations
+  infinitely and independently variable ease curvature and timing
+  infinitely and independently variable speed and timing control
+unlike competing solutions
+  it is configured through an extremely simple numerical API
+  it is tiny
+
+COMPANY (OR PRODUCT OR PERSON) is
+  a CATEGORY
+that/who
+  helps PRIMARY AUDIENCES
+reach
+  PRIMARY BENEFITS.
+Unlike other CATEGORY,
+  COMPANY (OR PRODUCT OR PERSON) PRIMARY DIFFERENCE.
+
+1. clear description
+2. how it could be useful
+3. why it is important
+  ->
+4. difference from analogs/competitors
+5. highlight relevant stats: low size, simple code, no issues, no dependencies
+  -> see bundlephobia
 
 
-## why
+- use bold to highlight keywords
+- use bullets and sections
+- use image and/or code-sample early
+- add a step-by-step starting guide, be very specific
+- add social proof: who uses it, who made cool stuff
+  -> call for people to share it, and report whether they are using it!
 
+
+## breakdown
+
+POINTS
+small, modular
+
+WHY
 Easing is hard to understand.
 The math is complex or at least daunting.
 A lot of articles confuse the issue, WRT what an easing function is.
+
+DIFF/IMPORTANCE
+first new algorithm since 2001
+it is recommended by... / it is used by...
+
 There is a standard set that's been around since 2001
+## why
+
 
 They can be seen at such places
 

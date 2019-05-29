@@ -1,0 +1,58 @@
+//-
+        _
+        | |
+  _ __ | |__
+  | '_ \| '_ \
+  | |_) | | | |
+  | .__/|_| |_|
+  | |
+  |_|
+
+mixin ph({ aspect = 1.5, height, color = 'rgba(0,0,0,0.1)', text } = {})
+  -
+    var style = { "background-color": color }
+    style[height?'height':'padding-bottom'] = height?height:`${100/aspect}%`
+  .hold(style=style)&attributes(attributes)
+    .abs-trbl.d-flex.jc-center.ai-center
+      if block
+        block
+      else if text
+        .a-center= text
+
+
+//-
+
+
+  _____   ____ _
+  / __\ \ / / _` |
+  \__ \\ V / (_| |
+  |___/ \_/ \__, |
+            __/ |
+            |___/
+
+mixin svg-img(relFile)
+  -
+    //- const path = require('path');
+    const absFile = srcResolve(relFile);
+    const { width, height } = imageSize(relFile);
+  .aspect(style=`--aspect: ${width/height}`)&attributes(attributes)
+    img.lazyload(data-src=`/${_path.relative($options.pubDir, absFile)}`)
+
+mixin svg(relFile)
+  -
+    //- const path = require('path');
+    //- const absFile = srcResolve(relFile);
+    const { width, height } = imageSize(relFile);
+  .hold-img.aspect(style=`--aspect: ${width/height}`)&attributes(attributes)
+    != render(`include ${relFile}`)
+
+mixin svg-legacy(relFile)
+  -
+    //- const path = require('path');
+    //- const absFile = srcResolve(relFile);
+    const { width, height } = imageSize(relFile);
+    const aspect = width/height;
+  .hold-svg(style=`padding-bottom: ${100/aspect}%;`)&attributes(attributes)
+    != render(`include ${relFile}`)
+
+//- include iframe

@@ -1,3 +1,5 @@
+import '@lunelson/homework';
+
 // window.process.env = 'development';
 
 // import SplitEase from '../src/index';

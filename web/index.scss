@@ -1,9 +1,63 @@
+@import '_stylesheets/common';
+// @import '_stylesheets/vendor/prism';
 
-@import "_stylesheets/fonts";
-@import "_stylesheets/base";
+$colors: (
+  'blue': #ADDDFF,
+  'green': #10ce00,
+  'dark': #141414,
+  'lite': #f5f5f5,
+
+  'rose': #EBD8D9,
+  'gray': (
+    darker: #222222,
+    dark: #545454,
+    mid: #858585,
+    light: #B7B7B7,
+    lighter: #E9E9E9,
+  ),
+);
+
+$z-indexes: ();
+@function z($i) { @return map-get($z-indexes, $i); }
+
+$fonts: (
+  sans: (
+    font-family: ('IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif),
+    line-height: lerp((14px: 1.6em, 70px: 1.2em), 1em),
+    letter-spacing: lerp((1px: 0.25px, 100px: -1px), 1em),
+    font-feature-settings: ('kern' 1),
+    trim-sides: calc(1px - 0.1em),
+    adjust-adjacent: calc(1em/16),
+    dist-capline: 0.14,
+    dist-baseline: 0.12,
+  ),
+  mono: (
+    font-family: ('IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace),
+    line-height: lerp((14px: 1.6em, 70px: 1.2em), 1em),
+    letter-spacing: lerp((1px: 0.25px, 100px: -1px), 1em),
+    font-feature-settings: ('kern' 1),
+    trim-sides: calc(1px - 0.1em),
+    adjust-adjacent: calc(1em/16),
+    dist-capline: 0.14,
+    dist-baseline: 0.12,
+  ),
+);
+
+@include homework-reset;
+@include homework-setup-root();
+@include homework-setup-page();
+@include homework-setup-stack();
+@include homework-setup-grid();
+@include homework-setup-cell();
+@include homework-setup-typo();
+@include homework-setup-atomic();
+@include homework-setup-helper();
+@include homework-setup-theme();
+@include homework-setup-state();
+@include homework-setup-debug($color: rgba(0,0,0,0.05));
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: map-get($fonts, sans, font-family);
 }
 
 canvas {

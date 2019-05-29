@@ -1,30 +1,33 @@
+include utilities
+
 doctype html
 html(lang="en")
-head
-  //- std
-  meta(charset="UTF-8")
-  meta(name="viewport", content="width=device-width, initial-scale=1.0")
-  meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  title= $data.social.title
-  //- schema
-  meta(itemprop='name' content=$data.social.title)
-  meta(itemprop='description' content=$data.social.description)
-  meta(itemprop='image' content=$data.social.image)
-  //- twitter
-  meta(name='twitter:card' content=$data.social.description)
-  meta(name='twitter:site' content=$data.social.twitter)
-  meta(name='twitter:creator' content=$data.social.twitter)
-  //- opengraph
-  meta(property='og:type' content=$data.social.type)
-  meta(property='og:url' content=$data.social.url)
-  meta(property='og:title' content=$data.social.title)
-  meta(property='og:description', content=$data.social.description)
-  meta(property='og:image' content=$data.social.image)
+  head
+    //- std
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title= $data.social.title
+    //- schema
+    meta(itemprop='name' content=$data.social.title)
+    meta(itemprop='description' content=$data.social.description)
+    meta(itemprop='image' content=$data.social.image)
+    //- twitter
+    meta(name='twitter:card' content=$data.social.description)
+    meta(name='twitter:site' content=$data.social.twitter)
+    meta(name='twitter:creator' content=$data.social.twitter)
+    //- opengraph
+    meta(property='og:type' content=$data.social.type)
+    meta(property='og:url' content=$data.social.url)
+    meta(property='og:title' content=$data.social.title)
+    meta(property='og:description', content=$data.social.description)
+    meta(property='og:image' content=$data.social.image)
 
-  link(href="/index.css", rel="stylesheet")
+    link(href="/index.css", rel="stylesheet")
 
-body
-  .wrap
-    include /_templates/split-ease.svg.pug
-    block main
-  script(src="/index.js")
+  body
+    header.wrap-last.frame.frame-y
+    main.wrap-last.frame
+      block main
+    footer.wrap-last.frame
+    script(src="/index.js")
