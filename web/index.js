@@ -26,8 +26,12 @@ import {
 
 import Vue from 'vue';
 
-import MaxiGraph from './_javascripts/maxi-graph.vue';
-export const desktopSideVM = new Vue({ render: h => h(MaxiGraph), }).$mount('#maxi-graph');
+import Controls from './_javascripts/controls.vue';
+const controlsVM = new Vue({ render: h => h(Controls), }).$mount('#controls');
+
+// import MaxiGraph from './_javascripts/maxi-graph.vue';
+
+// export const desktopSideVM =
 
 
 // const maxiGraph = new Vue({

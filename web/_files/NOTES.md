@@ -130,3 +130,26 @@ https://github.com/jhardy/compass-ceaser-easing
 
 - https://greensock.com/forums/topic/19326-easing-depending-on-distance-not-time/?tab=comments#comment-89828
 - https://greensock.com/forums/topic/19028-how-to-make-elastic-text-scroll/?tab=comments#comment-88435
+
+
+## Vue Range Slider and Toggle controls
+
+https://www.decathlon.de/p/kuhltasche-nh-fresh-compact-naturwandern-36-l-wei%C3%9F/_/R-p-175496?mc=8492770&c=WEI%C3%9F
+https://www.syncfusion.com/javascript-ui-controls/js-range-slider
+http://stryzhevskyi.github.io/rangeSlider/
+https://slawomir-zaziablo.github.io/range-slider/
+http://leaverou.github.io/multirange/
+http://vue-js-toggle-button.yev.io/
+https://codepen.io/zebresel/pen/xGLYOM?editors=0010
+https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+https://refreshless.com/nouislider/examples/
+http://stryzhevskyi.github.io/rangeSlider/
+https://codepen.io/eperedo/pen/ZaOYRE?editors=1011
+https://stackoverflow.com/questions/41068428/creating-a-pure-javascript-range-slider-control
+https://vuejs.org/v2/guide/forms.html
+https://rangeslider.js.org/
+http://stryzhevskyi.github.io/rangeSlider/
+https://www.npmjs.com/package/vue-bootstrap-slider
+https://pimlie.github.io/vue-bootstrap-slider/example.html
+https://jsfiddle.net/NightCatSama/2xy72dod/10339/
+https://pimlie.github.io/vue-bootstrap-slider/example.html

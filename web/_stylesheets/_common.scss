@@ -12,12 +12,13 @@ $root: (
   inner-x: 2rem,
   inner-y: 2rem,
   inner-mods: (
+    xxs: 0.3,
     xs: 0.5,
-    s: 0.75,
+    s: 0.8,
     m: 1,
-    l: 1.5,
+    l: 1.6,
     xl: 2,
-    xxl: 3,
+    xxl: 3.2,
   ),
   // outer-top: lerp((20rem: 1rem, 80rem: $outer-y-max)),
   // outer-bottom: lerp((20rem: 1rem, 80rem: $outer-y-max)),
@@ -145,4 +146,63 @@ $font-prefix: '/assets/fonts' !default;
     local('IBMPlexMono-TextItalic'),
     url('#{$font-prefix}/IBM-Plex-Mono/fonts/complete/woff2/IBMPlexMono-TextItalic.woff2') format('woff2'),
     url('#{$font-prefix}/IBM-Plex-Mono/fonts/complete/woff/IBMPlexMono-TextItalic.woff') format('woff');
+}
+
+$colors: (
+  'blue': #ADDDFF,
+  'green': #10ce00,
+  'dark': #141414,
+  'lite': #f5f5f5,
+
+  'rose': #EBD8D9,
+  'gray': (
+    darker: #222222,
+    dark: #545454,
+    mid: #858585,
+    light: #B7B7B7,
+    lighter: #E9E9E9,
+  ),
+);
+
+$z-indexes: ();
+@function z($i) { @return map-get($z-indexes, $i); }
+
+$fonts: (
+  sans: (
+    font-family: ('IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif),
+    line-height: lerp((14px: 1.6em, 70px: 1.2em), 1em),
+    letter-spacing: lerp((1px: 0.67px, 100px: -1px), 1em),
+    font-feature-settings: ('kern' 1),
+    trim-sides: calc(1px - 0.1em),
+    adjust-adjacent: calc(1em/16),
+    dist-capline: 0.14,
+    dist-baseline: 0.12,
+  ),
+  mono: (
+    font-family: ('IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace),
+    line-height: lerp((14px: 1.6em, 70px: 1.2em), 1em),
+    letter-spacing: lerp((1px: 0.67px, 100px: -1px), 1em),
+    font-feature-settings: ('kern' 1),
+    trim-sides: calc(1px - 0.1em),
+    adjust-adjacent: calc(1em/16),
+    dist-capline: 0.14,
+    dist-baseline: 0.12,
+  ),
+);
+
+@include homework-reset;
+@include homework-setup-root();
+@include homework-setup-page();
+@include homework-setup-stack();
+@include homework-setup-grid();
+@include homework-setup-cell();
+@include homework-setup-typo();
+@include homework-setup-atomic();
+@include homework-setup-helper();
+@include homework-setup-theme();
+@include homework-setup-state();
+@include homework-setup-debug($color: rgba(0,0,0,0.05));
+
+body {
+  font-family: map-get($fonts, sans, font-family);
 }

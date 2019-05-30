@@ -15,24 +15,40 @@
   },
   "plugins": [
     "import",
+    "vue",
     "prettier"
   ],
   "extends": [
-    "eslint:recommended",
+    "eslint:essential",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "prettier"
+    "plugin:vue/essential",
+    "prettier",
+    "prettier/vue"
   ],
   "rules": {
-    "no-bitwise": ["error", { "allow": ["~"] }],
+    "no-bitwise": [
+      "error",
+      {
+        "allow": [
+          "~"
+        ]
+      }
+    ],
     "no-unused-vars": "off",
     "no-console": "off",
     "import/order": [
-      "error", {
+      "error",
+      {
         "newlines-between": "always",
-        "groups": ["builtin", "external"]
+        "groups": [
+          "builtin",
+          "external"
+        ]
       }
     ],
-    "prettier/prettier": ["error"]
+    "prettier/prettier": [
+      "error"
+    ]
   }
 }

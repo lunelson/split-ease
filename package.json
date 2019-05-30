@@ -45,7 +45,8 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-ava": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0"
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.2.2"
   },
   "browserslist": ">1%",
   "@pika/pack": {
@@ -69,5 +70,8 @@
         "@pika/plugin-build-types"
       ]
     ]
+  },
+  "dependencies": {
+    "input-range-scss": "^1.5.1"
   }
 }
