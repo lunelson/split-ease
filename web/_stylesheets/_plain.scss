@@ -1,0 +1,217 @@
+.post-fig-m {}
+.post-fig-l {}
+.post-fig-xl {}
+.post-fig-m-right {}
+.post-fig-m-left {}
+.post-fig-2up {}
+
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
+
+.plain-xs {
+  > * { --stack-gap: var(--inner-y-s); }
+  h2, h3, h4, h5, h6, p, ul, ol, dl { @include font-base('sans'); }
+  > p { @include font-mod('sans','xs'); }
+}
+
+.plain-l {
+  > * { --stack-gap: var(--inner-y-m); }
+  h2, h3, h4, h5, h6, p, ul, ol, dl { @include font-base('sans'); }
+  > p { @include font-mod('sans','l'); }
+}
+
+.plain-m {
+
+  > * { --stack-gap: var(--inner-y-m); }
+
+  h2, h3, h4, h5, h6, p, ul, ol, dl { @include font-base('sans'); }
+
+  > h5, > p, > ul, > ol, > dl { @include font-mod('sans','m'); }
+
+  > h4 { @include font-mod('sans','m'); }
+  > h3, > blockquote { @include font-mod('sans','l'); }
+  > h2 { @include font-mod('sans','xl'); }
+
+
+  > h2 {
+    --stack-gap: var(--inner-y-xxl);
+    & + * { --stack-gap: var(--inner-y-l); }
+  }
+
+  > h3 {
+    --stack-gap: var(--inner-y-xl);
+    // & + * { --stack-gap: var(--inner-y-s); }
+  }
+
+  > h4 {
+    --stack-gap: var(--inner-y-l);
+    & + * { --stack-gap: var(--inner-y-s); }
+  }
+
+  > blockquote, .fig, figure {
+    --stack-gap: var(--inner-y-l);
+    & + * { --stack-gap: var(--inner-y-l); }
+  }
+
+  > blockquote {
+    font-style: italic;
+    color: #aaa;
+    // background-color: lightyellow;
+    border-left: 10px solid #eee;
+    padding-left: var(--inner-x);
+    @include solo-cells((
+      m: 8 1
+    ));
+  }
+
+
+  // > h5 {
+  //   --stack-gap: var(--inner-y-xl);
+  //   & + * { --stack-gap: var(--inner-y-l); }
+  // }
+
+  // > .fig,
+  // > .fig + * { --stack-gap: var(--inner-y-l); }
+  /*
+  figure-
+  */
+
+  > h5 + p {
+    margin-top: add(0em, var(--trim-bottom)) !important;
+    // background-color: red;
+    // --stack-gap: var(--inner-y-s);
+    // text-indent: 3em;
+  }
+
+  > p + p:not(.h5) {
+    // margin-top: add(0em, var(--trim-bottom));
+    // --stack-gap: var(--inner-y-s);
+    // text-indent: 3em;
+  }
+
+  > ul {
+    list-style-type: none;
+    counter-reset: ul-li;
+    > li {
+      counter-increment: ul-li;
+      text-indent: -2em;
+      margin-left: 2em;
+      &:before {
+        // font-size: 0.75em;
+        width: 1em;
+        margin-right: 1em;
+        content: counter(ul-li, disc);
+      }
+    }
+  }
+
+  > ol {
+    list-style-type: none;
+    counter-reset: ol-li;
+    > li {
+      counter-increment: ol-li;
+      text-indent: -2em;
+      margin-left: 2em;
+      &:before {
+        width: 1em;
+        margin-right: 1em;
+        content: counter(ol-li, decimal) '.';
+      }
+    }
+  }
+
+  // // STACK FONT STYLES
+
+  // // STACK FONT OVERRIDES
+  // @include mm-for(inner-y, inner-mods) {
+  //   > * { margin-top: inner-y(s); }
+  //   p + p { margin-top: inner-y(xxs) }
+  //   h3, h4, h5, h6 {
+  //     @at-root #{selector-insert('> *', '+')} {
+  //       margin-top: inner-y(ml);
+  //     }
+  //   }
+  // }
+
+  // table {
+  //   display: table;
+  //   min-width: auto;
+  //   width: 100%;
+  //   table-layout: fixed;
+  //   border-collapse: collapse;
+  //   empty-cells: show;
+  //   @include m(null, s) {
+  //     display: block;
+  //     overflow-x: auto;
+  //     -webkit-overflow-scrolling: touch;
+  //     -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+  //   }
+  //   thead, tbody { width: 100%; }
+  // }
+
+  // td, th { text-align: left; vertical-align: middle; }
+  // th { font-weight: normal; }
+  // td { font-weight: bold; }
+  // tr {
+  //   width: 100%;
+  //   // border: 1px solid black;
+  // }
+  // tr {
+  //   display: table-row;
+  //   @include mm-for(inner-mods l, inner-y) {
+  //     height: inner-y(l);
+  //   }
+  // }
+  // td, th {
+  //   padding: 10px 20px;
+  //   // background-color: pink;
+  //   // background-clip: content-box;
+  //   display: table-cell;
+  //   thead & { padding-top: 0; }
+  //   tfoot & { padding-bottom: 0; }
+  //   &:first-child { padding-left: 0; }
+  //   &:not(:first-child) {
+  //     text-align: center;
+  //   }
+  // }
+  // thead th:first-child,
+  // tbody th { border-right: 3px solid map-get($colors, satin); }
+  // thead, tr { border-bottom: 3px solid map-get($colors, satin); }
+  // tr:last-child { border: none; }
+
+  // // BLOCKQUOTE special style
+  // // requires q and cite children
+
+  // blockquote {
+  //   position: relative;
+  //   font-weight: bold;
+  //   @include mm(s) {
+  //     float: left;
+  //     margin-right: inner-x();
+  //     margin-bottom: inner-y(ml);
+  //   }
+  //   @include mm(s,m) {
+  //     width: span-i-width(2,8);
+  //   }
+  //   @include mm(m,l) {
+  //     width: span-i-width(4,9);
+  //     margin-left: push-i-width(-1,9);
+  //   }
+  //   @include mm(l) {
+  //     width: span-i-width(3,9);
+  //     margin-left: push-i-width(-1,9);
+  //   }
+  //   q {
+  //     display: block;
+  //     &::before { display: block; content: "\00bb"; }
+  //     &::after { display: block; content: "\00ab"; }
+  //   }
+  //   cite {
+  //     font-size: var(--font-size-mono-i1);
+  //     line-height: var(--line-height-mono-i1);
+  //     display: block;
+  //     font-weight: normal;
+  //     font-style: normal;
+  //     text-transform: uppercase;
+  //   }
+  // }
+}

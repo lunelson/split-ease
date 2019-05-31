@@ -26,8 +26,15 @@ html(lang="en")
     link(href="/index.css", rel="stylesheet")
 
   body
-    header.wrap-last.frame.frame-y
-    main.wrap-last.frame
-      block main
-    footer.wrap-last.frame
-    script(src="/index.js")
+    #page.stack-xl
+      header.wrap-last.frame.frame-top
+        .span-9
+          .stack-l
+            h1.f-sans-xxl SplitEase.js
+            h2.f-sans-xl The curve with a beginning, middle and end.
+            p.f-sans-l= _chance.paragraph({ sentences: 4 })
+
+      main.wrap-last.frame
+        block main
+      footer.wrap-last.frame.frame-bottom
+      script(src="/index.js")

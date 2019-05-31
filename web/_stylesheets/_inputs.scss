@@ -28,7 +28,7 @@
   }
 
   // checkbox styling
-  input[type=checkbox]:checked + label::after { margin-left: auto; }
+  input[type=checkbox]:checked + label::after { margin-left: 4px; }
   input[type=checkbox] + label {
     display: flex;
     align-items: center;
@@ -42,6 +42,7 @@
       width: 20px;
       height: 20px;
       margin: 4px;
+      margin-left: auto;
       border-radius: 50%;
       border: 2px solid #000;
     }
@@ -68,11 +69,11 @@ $thumb-border-width: 2px;
 $thumb-border-color: black;
 
 $track-width: 100% !default;
-$track-height: 2px !default;
+$track-height: 0px !default;
 $track-shadow-size: 1px !default;
 $track-shadow-blur: 1px !default;
 $track-shadow-color: transparent;
-$track-border-width: 0px;
+$track-border-width: 1px;
 $track-border-color: black;
 
 $track-radius: 5px !default;

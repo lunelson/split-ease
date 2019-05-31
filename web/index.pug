@@ -2,25 +2,22 @@ extends /_templates/layout
 block main
 
   .flow-l
-    .span-9
-      .stack-l
-        .f-sans-xxl SplitEase.js
-        .f-sans-xl The curve with a beginning, middle and end.
-        .f-sans-l= _chance.paragraph({ sentences: 4 })
 
-    .span
-      +ph({ aspect: 16/9 })
+    #feature-graph
+    //- #feature.span.stack-l
+      .span.grapher.rel
+        canvas
+        +ph({ aspect: 16/9, color: '#ddd' })
+        form#controls
 
-      form#controls
+      .span.readout
+        figure.stack-s
+          .code
+            .stack.a-center
+              .call.f-mono.strong SplitEase(0.33, 0.33, { sin: true })
+          figcaption.f-mono-xs= _casual.text
 
-    .span
-      .stack-s
-        .readout
-          .stack
-            .f-mono SplitEase(0.3, 0.3, { sin: true })
-        .f-mono-xs= _casual.text
-
-    .span-8
+    #article.span-8
       .plain-m
         :markdown
           Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.

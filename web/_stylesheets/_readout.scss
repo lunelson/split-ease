@@ -1,0 +1,37 @@
+.readout {
+
+  .code {
+    background-color: #ddd;
+    // padding: 2rem;
+    $min-p: 1rem;
+    $max-p: 2rem;
+    @include m(null, xs) {
+      padding: $min-p;
+    }
+    @include m(xs,l) {
+      padding: lerp((
+        32rem: $min-p,
+        64rem: $max-p,
+      ));
+    }
+    @include m(l) {
+      padding: $max-p;
+    }
+  }
+  .call {
+    $min-fz: 18px;
+    $max-fz: 36px;
+    @include m(null, xs) {
+      font-size: $min-fz;
+    }
+    @include m(xs,l) {
+      font-size: lerp((
+        32rem: $min-fz,
+        64rem: $max-fz,
+      ));
+    }
+    @include m(l) {
+      font-size: $max-fz;
+    }
+  }
+}

@@ -5,7 +5,7 @@
 @import '@lunelson/sass-u/index';
 @import '@lunelson/homework/index';
 
-$outer-x-max: 6rem;
+$outer-x-max: 4rem;
 
 $root: (
   grid-columns: 6,
@@ -20,10 +20,10 @@ $root: (
     xl: 2,
     xxl: 3.2,
   ),
-  // outer-top: lerp((20rem: 1rem, 80rem: $outer-y-max)),
-  // outer-bottom: lerp((20rem: 1rem, 80rem: $outer-y-max)),
-  // outer-right: lerp((20rem: 1rem, 80rem: $outer-x-max)),
-  // outer-left:  lerp((20rem: 1rem, 80rem: $outer-x-max)),
+  // outer-top: lerp((20rem: 1rem, 64rem: $outer-y-max)),
+  // outer-bottom: lerp((20rem: 1rem, 64rem: $outer-y-max)),
+  outer-right: lerp((20rem: 1rem, 64rem: $outer-x-max)),
+  outer-left:  lerp((20rem: 1rem, 64rem: $outer-x-max)),
   font-mods: (
     sans: (
       xs: 14px,
@@ -45,19 +45,22 @@ $root: (
 );
 
 $media: (
+  xs: (
+    breakpoint: 20em,
+  ),
   s: (
     grid-columns: 8,
     breakpoint: 32em,
   ),
   m: (
-    breakpoint: 48em,
+    breakpoint: 40em,
     grid-columns: 12,
   ),
   l: (
     breakpoint: 64em,
     // grid-columns: 12,
-    // outer-right: $outer-x-max,
-    // outer-left: $outer-x-max,
+    outer-right: $outer-x-max,
+    outer-left: $outer-x-max,
   ),
   // xl: (
   //   breakpoint: 80em,
@@ -171,7 +174,7 @@ $fonts: (
   sans: (
     font-family: ('IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif),
     line-height: lerp((14px: 1.6em, 70px: 1.2em), 1em),
-    letter-spacing: lerp((1px: 0.67px, 100px: -1px), 1em),
+    letter-spacing: lerp((1px: 0.5px, 100px: -1px), 1em),
     font-feature-settings: ('kern' 1),
     trim-sides: calc(1px - 0.1em),
     adjust-adjacent: calc(1em/16),
@@ -181,7 +184,7 @@ $fonts: (
   mono: (
     font-family: ('IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace),
     line-height: lerp((14px: 1.6em, 70px: 1.2em), 1em),
-    letter-spacing: lerp((1px: 0.67px, 100px: -1px), 1em),
+    letter-spacing: lerp((1px: 0.5px, 100px: -1px), 1em),
     font-feature-settings: ('kern' 1),
     trim-sides: calc(1px - 0.1em),
     adjust-adjacent: calc(1em/16),

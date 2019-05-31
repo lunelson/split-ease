@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  form#controls(@submit.prevent).stack-xs
+  form#controls(@submit.prevent).stack-xs.mt-xs
 
     .stack-xxs
       .d-flex.ai-center
@@ -45,7 +45,6 @@
 export default {
   data() {
     return {
-      isSplit: true,
       pattern: 'split',
       easeIn: 0.3,
       easeOut: 0.3,

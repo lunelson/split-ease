@@ -26,8 +26,11 @@ import {
 
 import Vue from 'vue';
 
-import Controls from './_javascripts/controls.vue';
-const controlsVM = new Vue({ render: h => h(Controls), }).$mount('#controls');
+// import Controls from './_javascripts/controls.vue';
+// const controlsVM = new Vue({ render: h => h(Controls), }).$mount('#controls');
+
+import FeatureGraph from './_javascripts/feature-graph.vue';
+const FeatureGraphVM = new Vue({ render: h => h(FeatureGraph), }).$mount('#feature-graph');
 
 // import MaxiGraph from './_javascripts/maxi-graph.vue';
 
