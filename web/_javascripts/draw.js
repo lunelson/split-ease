@@ -10,7 +10,6 @@ function easeGraph(ctx, dpr, easeFn, x, y, width, height, speedStyle, accelStyle
 
   // TRANSLATION, SCALE
   ctx.translate(x, y + height); // translate to bottom-left corner
-  // ctx.scale(dpr, dpr * -1); // flip Y
   ctx.scale(1, -1); // flip Y
   ctx.lineWidth = 4 * dpr;
 

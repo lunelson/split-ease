@@ -2,10 +2,12 @@
 
   include /_templates/utilities
 
-  #feature-graph.span.stack-l
+  #feature-graph.span.stack-l.rel
     .span.grapher.rel(ref='feature')
-      +ph({ height: '20px', color: 'transparent' }).ph-labels
-      +ph({ aspect: 2.5, color: 'transparent' }).ph-graphs
+      .progress-area.rel
+        +ph({ height: '20px', color: 'transparent' }).ph-labels
+        +ph({ aspect: 2.5, color: 'transparent' }).ph-graphs
+        .progress.abs
       canvas(ref='canvas')
       form#controls(@submit.prevent).stack-xs.mt-xs
 
@@ -138,7 +140,7 @@ export default {
     this.canvas = this.$refs['canvas'];
     this.ctx = this.canvas.getContext('2d');
     this.dpr = window.devicePixelRatio || 1;
-    window.addEventListener('resize', e => this.setFeatureCanvas);
+    window.addEventListener('resize', this.setFeatureCanvas);
     this.setFeatureCanvas();
   },
   watch: {
@@ -155,5 +157,3 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-</style>
