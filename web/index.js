@@ -32,6 +32,7 @@ import Vue from 'vue';
 import FeatureGraph from './_javascripts/feature-graph.vue';
 const FeatureGraphVM = new Vue({ render: h => h(FeatureGraph), }).$mount('#feature-graph');
 
+
 // import MaxiGraph from './_javascripts/maxi-graph.vue';
 
 // export const desktopSideVM =

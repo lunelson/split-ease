@@ -3,17 +3,15 @@
   include /_templates/utilities
 
   #feature-graph.span.stack-l
-    .debug
-      pre: code graphWidth: {{ typeof graphWidth }}
-      pre: code graphHeight: {{ typeof graphHeight }}
-    .span.grapher.rel
+    .span.grapher.rel(ref='feature')
+      +ph({ height: '20px', color: 'transparent' }).ph-labels
+      +ph({ aspect: 2.5, color: 'transparent' }).ph-graphs
       canvas(ref='canvas')
-      +ph({ aspect: 2, color: 'transparent' })
       form#controls(@submit.prevent).stack-xs.mt-xs
 
         .stack-xxs
           .d-flex.ai-center
-            .label.f-sans-xs.strong Ease-In/-Out Pattern | Timing
+            .label.f-sans-xs.strong Ease-In/-Out Timing
             .radio.f-sans-xs.strong.ml-auto
               input.vhide(id='radio-pattern-split', type='radio', value='split', v-model='pattern')
               label(for='radio-pattern-split') Split
@@ -22,7 +20,9 @@
               input.vhide(id='radio-pattern-point', type='radio', value='point', v-model='pattern')
               label.ml-xs(for='radio-pattern-point') Midpoint
               span.pipe.ml-xs
-              button.ml-xs(type='button', @click='resetPattern') Reset
+              input(type='tel', v-model='duration', :style='{width: `${duration.toString().length}ch`}').ml-xs
+              span &thinsp;ms
+              //- button.ml-xs(type='button', @click='resetPattern') Reset
 
           .range.f-sans-xs.strong
             label.vhide(for="range-ease1") {{ pattern == 'split' ? 'Ease-In Proportion' : 'Ease-In/-Out Proportion'}}
@@ -34,16 +34,16 @@
 
         .stack-xxs
           .d-flex.ai-center
-            .label.f-sans-xs.strong Curve Type | Power
+            .label.f-sans-xs.strong Easing Curve
             .radio.f-sans-xs.strong.ml-auto
               input.vhide(id='radio-curve-pow', type='radio', value='pow', v-model='curve')
-              label(for='radio-curve-pow') Power: {{ power.toFixed(1) }}
+              label(for='radio-curve-pow') Power: {{ power.toFixed(2) }}
               input.vhide(id='check-curve', type='checkbox', true-value='pow', false-value='sin', v-model='curve')
               label.ml-xs(for='check-curve')
               input.vhide(id='radio-curve-sin', type='radio', value='sin', v-model='curve')
               label.ml-xs(for='radio-curve-sin') Sine
-              span.pipe.ml-xs
-              button.ml-xs(type='button', @click='resetCurve') Reset
+              //- span.pipe.ml-xs
+              //- button.ml-xs(type='button', @click='resetCurve') Reset
 
           .range.f-sans-xs.strong
             label.vhide(for="range-power") Ease-Out Proportion
@@ -60,18 +60,19 @@
 <script>
 import SplitEase from '../../';
 import { easeGraph } from './graphing.js';
+import draw from './draw';
 
 export default {
   data() {
     return {
-      pattern: 'point',
-      easeIn: 0.5,
-      easeOut: 0.5,
+      duration: 1000,
+      pattern: 'split',
+      easeIn: 0.33,
+      easeOut: 0.33,
       curve: 'pow',
       power: 2,
       canvas: null,
       ctx: null,
-      graphWidth: 600,
     };
   },
   computed: {
@@ -92,7 +93,7 @@ export default {
       },
       set(n) {
         this.easeIn = n;
-        if (this.easeIn + this.easeOut > 1) {
+        if (this.pattern == 'point' || this.easeIn + this.easeOut > 1) {
           this.easeOut = 1 - this.easeIn;
         }
       },
@@ -108,61 +109,46 @@ export default {
         }
       },
     },
-    // sin() {
-    //   return this.type == 'sin';
-    // },
     easeFn() {
       const args = this.pattern == 'point' ? [this.easeIn] : [this.easeIn, this.easeOut];
       const opts = this.curve == 'sin' ? { sin: true } : { pow: this.power };
       return SplitEase(...args, opts);
     },
-    graphHeight() {
-      return this.graphWidth / 2;
-    },
-    // easeFn() {
-    //   return SplitEase(...this.argList);
-    // },
   },
   methods: {
+    draw,
     resetPattern() {
-      this.pattern = 'point';
-      this.easeIn = 0.5;
-      this.easeOut = 0.5;
+      this.pattern = 'split';
+      this.easeIn = 0.33;
+      this.easeOut = 0.33;
     },
     resetCurve() {
       this.curve = 'pow';
       this.power = 2;
     },
-    draw() {
-      this.ctx.clearRect(0, 0, this.graphWidth, this.graphHeight);
-      easeGraph(
-        this.ctx,
-        this.easeFn,
-        0,
-        10,
-        this.graphWidth - 0,
-        this.graphHeight - 20,
-        'rgb(200, 100, 100)',
-        'rgb(255,200,100)',
-      );
+    setFeatureCanvas() {
+      let { width, height } = this.$refs['feature'].getBoundingClientRect();
+      width *= this.dpr;
+      height *= this.dpr;
+      Object.assign(this.canvas, { width, height });
+      this.draw();
     },
   },
   mounted() {
     this.canvas = this.$refs['canvas'];
     this.ctx = this.canvas.getContext('2d');
-    this.ctx.lineWidth = 4;
-    this.graphWidth = this.canvas.getBoundingClientRect().width;
-    this.canvas.width = this.graphWidth;
-    this.canvas.height = this.graphHeight;
-    this.draw();
-    window.addEventListener('resize', e => {
-      this.graphWidth = this.canvas.getBoundingClientRect().width;
-      this.canvas.width = this.graphWidth;
-      this.canvas.height = this.graphHeight;
-      this.draw();
-    });
+    this.dpr = window.devicePixelRatio || 1;
+    window.addEventListener('resize', e => this.setFeatureCanvas);
+    this.setFeatureCanvas();
   },
   watch: {
+    pattern(newPattern) {
+      if (newPattern == 'point') {
+        const diff = 1 - this.easeIn - this.easeOut;
+        this.easeIn += diff / 2;
+        this.easeOut = 1 - this.easeIn;
+      }
+    },
     easeFn() {
       this.draw();
     },
