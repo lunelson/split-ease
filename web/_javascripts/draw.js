@@ -71,7 +71,7 @@ export default function draw() {
   // ctx.scale(dpr, dpr);
 
   // set font, fill, stroke styles; line width
-  ctx.font = `normal bold ${14 * dpr}px/1 "IBM Plex Mono"`;
+  ctx.font = `normal bold ${14 * dpr}px/${labelHeight * dpr}px "IBM Plex Mono"`;
   ctx.fillStyle = '#00AAFF';
   ctx.strokeStyle = '#00AAFF';
   ctx.lineWidth = 2 * dpr;
@@ -105,8 +105,8 @@ export default function draw() {
       easeInStrWidth + inset * 3,
       (1 - easeOut) * (width - inset * 2) + inset),
   );
-  ctx.fillText(easeInStr, easeInLabelPosn, labelHeight - 5 * dpr);
-  ctx.fillText(easeOutStr, easeOutLabelPosn, labelHeight - 5 * dpr);
+  ctx.fillText(easeInStr, easeInLabelPosn, labelHeight - 4 * dpr);
+  ctx.fillText(easeOutStr, easeOutLabelPosn, labelHeight - 4 * dpr);
   ctx.beginPath();
   ctx.moveTo(easeInLabelStop, 5 * dpr);
   ctx.lineTo(easeInLabelStop, 15 * dpr);

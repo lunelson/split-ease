@@ -7,7 +7,9 @@
       .progress-area.rel
         +ph({ height: '20px', color: 'transparent' }).ph-labels
         +ph({ aspect: 2.5, color: 'transparent' }).ph-graphs
-        .progress.abs
+          .progress
+            .marker(ref='marker')
+              .label.f-mono-xs.strong {{ progStr }}
       canvas(ref='canvas')
       form#controls(@submit.prevent).stack-xs.mt-xs
 
@@ -63,11 +65,15 @@
 import SplitEase from '../../';
 import { easeGraph } from './graphing.js';
 import draw from './draw';
+import { TweenMax, Ease, CSSPlugin, TimelineMax } from 'gsap/all';
+const keepGsap = [CSSPlugin, Ease];
+import { debounce } from 'tiny-throttle';
 
 export default {
   data() {
     return {
       duration: 1000,
+      progress: 1,
       pattern: 'split',
       easeIn: 0.33,
       easeOut: 0.33,
@@ -78,6 +84,12 @@ export default {
     };
   },
   computed: {
+    progStr() {
+      return `${(this.progress * 100).toFixed(0)}%`;
+    },
+    progStyle() {
+      return { transform: `translateY(${(1 - this.progress) * 100}%)` };
+    },
     fnSignature() {
       return `SplitEase(${this.easeIn.toFixed(2)}${this.pattern == 'split' ? this.fnArg2 : ''}${
         this.power != 2 || this.curve == 'sin' ? this.fnOpts : ''
@@ -119,15 +131,15 @@ export default {
   },
   methods: {
     draw,
-    resetPattern() {
-      this.pattern = 'split';
-      this.easeIn = 0.33;
-      this.easeOut = 0.33;
-    },
-    resetCurve() {
-      this.curve = 'pow';
-      this.power = 2;
-    },
+    // resetPattern() {
+    //   this.pattern = 'split';
+    //   this.easeIn = 0.33;
+    //   this.easeOut = 0.33;
+    // },
+    // resetCurve() {
+    //   this.curve = 'pow';
+    //   this.power = 2;
+    // },
     setFeatureCanvas() {
       let { width, height } = this.$refs['feature'].getBoundingClientRect();
       width *= this.dpr;
@@ -135,6 +147,25 @@ export default {
       Object.assign(this.canvas, { width, height });
       this.draw();
     },
+  },
+  created() {
+    this.demo = debounce(() => {
+      const ease = new Ease(this.easeFn);
+      const dist = this.$refs.marker.getBoundingClientRect().height;
+      const timeline = new TimelineMax();
+      this.progress = 0;
+      timeline.set(this.$refs['marker'], { y: dist });
+      timeline.to(
+        this.$refs['marker'],
+        this.duration / 1000,
+        {
+          y: 0,
+          ease,
+          onUpdate: () => (this.progress = timeline.progress()),
+        },
+        0.3,
+      );
+    }, 300);
   },
   mounted() {
     this.canvas = this.$refs['canvas'];
@@ -153,6 +184,10 @@ export default {
     },
     easeFn() {
       this.draw();
+      this.demo();
+    },
+    duration() {
+      this.demo();
     },
   },
 };

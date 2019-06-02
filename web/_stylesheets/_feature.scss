@@ -10,10 +10,25 @@
   }
 
   .progress {
+    color: red;
+    position: absolute;
     width: calc(50vw - 50%);
     height: 100%;
-    left: 100%;
+    left: calc(100% + 20px);
     top: 0;
-    background-color: pink;
+    .marker {
+      position: absolute;
+      width: 100%;
+      max-width: 200px;
+      height: calc(100% - 20px);
+      top: 6px;
+      left: 0;
+      border-top: 8px solid red;
+    }
+    .label {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 0;
+    }
   }
 }
