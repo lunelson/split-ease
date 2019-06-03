@@ -2,7 +2,6 @@
   "env": {
     "es6": true,
     "node": true,
-    "jest": true,
     "commonjs": true,
     "browser": true
   },
@@ -16,13 +15,14 @@
   "plugins": [
     "import",
     "vue",
+    "ava",
     "prettier"
   ],
   "extends": [
-    "eslint:essential",
+    "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:vue/essential",
+    "plugin:vue/recommended",
     "prettier",
     "prettier/vue"
   ],

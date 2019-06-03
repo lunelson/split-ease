@@ -41,13 +41,13 @@
             .label.f-sans-xs.strong Easing Curve
             .radio.f-sans-xs.strong.ml-auto
               input.vhide(id='radio-curve-pow', type='radio', value='pow', v-model='curve')
-              label(for='radio-curve-pow') Power: {{ power.toFixed(2) }}
+              label(for='radio-curve-pow') Power {{ power.toFixed(2) }}
               input.vhide(id='check-curve', type='checkbox', true-value='pow', false-value='sin', v-model='curve')
               label.ml-xs(for='check-curve')
               input.vhide(id='radio-curve-sin', type='radio', value='sin', v-model='curve')
               label.ml-xs(for='radio-curve-sin') Sine
-              //- span.pipe.ml-xs
-              //- button.ml-xs(type='button', @click='resetCurve') Reset
+              span.pipe.ml-xs
+              button.ml-xs(type='button', @click='resetCurve') Reset All
 
           .range.f-sans-xs.strong
             label.vhide(for="range-power") Ease-Out Proportion
@@ -131,15 +131,14 @@ export default {
   },
   methods: {
     draw,
-    // resetPattern() {
-    //   this.pattern = 'split';
-    //   this.easeIn = 0.33;
-    //   this.easeOut = 0.33;
-    // },
-    // resetCurve() {
-    //   this.curve = 'pow';
-    //   this.power = 2;
-    // },
+    resetPattern() {},
+    resetCurve() {
+      this.pattern = 'split';
+      this.easeIn = 0.33;
+      this.easeOut = 0.33;
+      this.curve = 'pow';
+      this.power = 2;
+    },
     setFeatureCanvas() {
       let { width, height } = this.$refs['feature'].getBoundingClientRect();
       width *= this.dpr;
@@ -163,9 +162,9 @@ export default {
           ease,
           onUpdate: () => (this.progress = timeline.progress()),
         },
-        0.3,
+        0.25,
       );
-    }, 300);
+    }, 250);
   },
   mounted() {
     this.canvas = this.$refs['canvas'];

@@ -1,4 +1,6 @@
-_archive
-assets
-pkg
+.editorconfig
+.eslintrc
+.prettierrc.yaml
+penny.config.js
+src
 web

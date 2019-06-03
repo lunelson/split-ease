@@ -1,5 +1,7 @@
 import '@lunelson/homework';
 
+import Vue from 'vue';
+
 import { easeGraph } from './_javascripts/graphing';
 import {
   linear,
@@ -17,13 +19,10 @@ import {
   easeInOutQuint,
   easeInSine,
   easeOutSine,
-  easeInOutSine
+  easeInOutSine,
 } from './_javascripts/lib/penner';
-
-import Vue from 'vue';
-
 import FeatureGraph from './_javascripts/feature-graph.vue';
-const FeatureGraphVM = new Vue({ render: h => h(FeatureGraph), }).$mount('#feature-graph');
+const FeatureGraphVM = new Vue({ render: h => h(FeatureGraph) }).$mount('#feature-graph');
 // CURVE-SETS
 
 const curveSets = [
@@ -42,6 +41,15 @@ document.querySelectorAll('.curve-set').forEach((set, i) => {
     const s = 2;
 
     ctx.lineWidth = s;
-    easeGraph(ctx, curveSets[i][j], s, s, 200 - 2 * s, 100 - 2 * s, 'rgb(200, 100, 100)', 'rgb(255,200,100)');
+    easeGraph(
+      ctx,
+      curveSets[i][j],
+      s,
+      s,
+      200 - 2 * s,
+      100 - 2 * s,
+      'rgb(200, 100, 100)',
+      'rgb(255,200,100)',
+    );
   });
 });
