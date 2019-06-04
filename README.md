@@ -1,76 +1,30 @@
 <h1 align="center">
   <a href="https://split-ease.netlify.com">
-    <img src="assets/banner.svg" width="80%" alt="Split-Ease Logo">
+    <img src="web/assets/banner.svg" width="80%" alt="Split-Ease Logo">
   </a>
   <br>
   SplitEase.js
 </h1>
 
 <h4 align="center">The curve with a beginning, middle and end.</h4>
-<h4 align="center">< 800 bytes compressed</h4>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/animejs" rel="nofollow">
-  <img src="https://camo.githubusercontent.com/011820ee25bf1d3ddaf635d869903b98eccaeae7/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f616e696d656a732e7376673f7374796c653d666c61742d737175617265" alt="npm version" data-canonical-src="https://img.shields.io/npm/v/animejs.svg?style=flat-square" style="max-width:100%;">
-  </a>
-  <a href="https://www.npmjs.com/package/animejs" rel="nofollow">
-  <img src="https://camo.githubusercontent.com/3e9b69d51aee25fad784a3097676696096621d47/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f646d2f616e696d656a732e7376673f7374796c653d666c61742d737175617265" alt="npm downloads" data-canonical-src="https://img.shields.io/npm/dm/animejs.svg?style=flat-square" style="max-width:100%;">
-  </a>
-</p>
-
-<p align="center">
+  <a href="#backstory">Backstory</a>&nbsp;|&nbsp;
   <a href="#getting-started">Getting started</a>&nbsp;|&nbsp;
   <a href="#documentation">Documentation</a>
 </p>
 
-### People to ping
+SplitEase.js is a JavaScript function which offers animators and creative coders a means to compose separately timed variable __acceleration__, __constant-speed__ and __deceleration__ segments in a single continous interpolation. It weighs less than 1k.
 
-sarah drasner
-val head
-rachel nabors
-
-xaverfourcrier
-https://github.com/xavierfoucrier
-
-legomushroom
-creator of mojs
-https://github.com/legomushroom
-https://twitter.com/legomushroom
-
-gre
-creator of numerous easing libs
-https://github.com/gre
-https://twitter.com/greweb
-
-mattdesl
-https://github.com/mattdesl
-https://twitter.com/mattdesl
-
-mbostock
-creator of d3, d3-ease
-https://github.com/mbostock
-https://twitter.com/mbostock
-
-### Twitter threads
-
-https://twitter.com/andy_matuschak/status/566736015188963328
-
-### Prior Art
-
-d3/d3-ease
-well-visualised here
-https://bl.ocks.org/mbostock/248bac3b8e354a9103c4
-
-## Visualisations
-
-d3-ease https://bl.ocks.org/mbostock/248bac3b8e354a9103c4
-gsap
+For an interactive visualisation of its simple numeric API [see the homepage]().
 
 ## Backstory
 
-original easings created by robert penner
-listed here, with their implementations http://gizma.com/easing/
+Most strictly-timed (i.e. not simulation-based) animation on the web makes use of interpolation (easing) functions originally popularized by [Robert Penner](http://robertpenner.com/easing/) in his [2002 book on programming Flash MX](http://robertpenner.com/profmx/). This book proposed 10 curve-types (Sine, Quad, Cubic, Quart, Quint, Exp, Back, Circ, Elastic, Bounce) times 3 variations (easeIn, easeOut and easeInOut), to offer [30 different patterns of movement](https://easings.net/en).
 
+SplitEase addresses the problem of deciding between the most common of these patterns, by composing the underlying math of the Sine and Power (Quad, Cubic, Quart, Quint) curves in a way that makes their ease-in/-out/-in-out proportions and their power curvature independently variable.
+
+Feedback or questions: [ping me on Twitter](https://twitter.com/lunelson)
 
 ## Getting started
 
@@ -169,44 +123,7 @@ TweenLite.to(obj, 5, {x:600, ease:new Ease(myEase)});
 [ThreeJS](https://threejs.org/)
 [Popmotion](https://popmotion.io/)
 
-https://github.com/mojs/mojs
-https://github.com/mojs/mojs/blob/master/api/easing/path-easing.md
-https://codepen.io/sol0mka/#
-https://codepen.io/sol0mka/pen/KMWgQp?editors=0010
-https://codepen.io/sol0mka/full/ogOYJj/
-https://github.com/mojs-contrib/mojs-player
-https://github.com/mojs-contrib/mojs-curve-editor
-https://github.com/mojs-contrib/mojs-timeline-editor
-https://github.com/maxwellito/vivus
 
-## The easing library that's actually easy.
-
-Split-Ease generates uniquely powerful and flexible easing functions for JavaScript animation, by interpolating through separate *acceleration*, *constant-speed*, and *deceleration* segments in variable proportion and curvature.
-
-See [the demo]().
-
-## WTF
-
-## Installation
-
-## API
- (in, constant, out). It integrates "power" and "sine" polynomial curves (such as popularized by Robert Penner c. 2001), in a manner that allows independently-variable proportion and curvature.
-
-
-## Other projects
-
-https://github.com/mattdesl/eases
-
-
-![](/split-ease.svg)
-
-# SplitEase
-
-SplitEase is an alternative approach to easing functions for JavaScript which computes ease-curves in terms of separately variable continuous segments, opening a new range of speed-control patterns for interpolation-based motion design and animation.
-
-See [the interactive demo]().
-
-Feedback or questions: [ping me on Twitter](https://twitter.com/lunelson)
 
 
 ### Installation
@@ -270,21 +187,39 @@ anime({
 });
 ```
 
-## Backstory
 
-Most animation uses interpolation (rather than simulation) to create the illusion of movement, and uses 'easing' or 'timing' functions to make this appear natural. The most widely-used of these were introduced by [Robert Penner](http://robertpenner.com/easing/) as part of [his book on programming Macromedia Flash MX  in 2001](http://robertpenner.com/easing/penner_chapter7_tweening.pdf) where he proposed 10 curve-types (Sine, Exp, Back, Circ, Elastic, Bounce, and 4 Power curves) times 3 easing patterns (easeIn, easeOut and easeInOut). These are still found in the source code of jQuery, Velocity, Greensock, and most other animation codebases.
+## Other projects
 
-SplitEase takes two of these curve-types (Power and Sine, the most fundamental ones for movement) and makes the easing pattern variable and dynamic: calculating the 'in' (acceleration) and 'out' (deceleration) durations as separate segments and offering the unique possibility of a third, linear (constant-speed) segment; and for the Power set, unifying the sub-types (Quadratic, Cubic, Quartic etc.) by offering power (`p`) as a fourth argument.
+https://github.com/mattdesl/eases
 
-## How
+gre bezier easing
+https://github.com/gre/bezier-easing
 
-The API of time `t` in the range `0..1` is compatible with animation libraries that otherwise use Penner-style easing functions. You may have to wrap SplitEase in an anonymous callback—example here from [tween.js](https://github.com/tweenjs/tween.js):
+lea verou
+cubic-bezier easing
+  Lea Verou tool, does it in JS
+  https://cubic-bezier.com/
+  Matthew Lein tool, allows you to build CSS versions
+  https://matthewlein.com/tools/ceaser
+
+greensock custom ease
+  https://greensock.com/ease-visualizer
 
 
-## Now
+![](/split-ease.svg)
 
-Download / Star / Fork this on Github.
+### Prior Art
 
-[Ping / Follow me on Twitter](https://twitter.com/lunelson).
+d3/d3-ease
+well-visualised here
+https://bl.ocks.org/mbostock/248bac3b8e354a9103c4
 
-[Website](https://split-ease.netlify.com/) | [ISC License](LICENSE.md) | © 2019 [Lu Nelson](https://lunelson.xyz).
+## Visualisations
+
+d3-ease https://bl.ocks.org/mbostock/248bac3b8e354a9103c4
+gsap
+
+## Acknowledgements
+
+Robert Penner
+Andrey Sitnik for [easings.net](https://easings.net/en)
