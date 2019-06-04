@@ -78,7 +78,7 @@ test('console.warn about scaling, when ratios exceed 1', () => {
     [0.3, 0.3, { pow: 5.5 }],
   ].forEach((args, i) => {
     SplitEase.apply(null, args);
-    expect(consoleWarn).toHaveBeenCalledTimes(i + 1);
+    if (args.length) expect(consoleWarn).toHaveBeenCalledTimes(i + 1);
   });
   consoleWarn.mockRestore();
 });

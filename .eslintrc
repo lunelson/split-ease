@@ -7,11 +7,7 @@
     "jest/globals": true
   },
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2018,
-    "ecmaFeatures": {
-      "impliedStrict": true
-    }
+    "sourceType": "module"
   },
   "plugins": [
     "import",
@@ -29,14 +25,6 @@
     "prettier/vue"
   ],
   "rules": {
-    "no-bitwise": [
-      "error",
-      {
-        "allow": [
-          "~"
-        ]
-      }
-    ],
     "no-unused-vars": "off",
     "no-console": "off",
     "import/order": [

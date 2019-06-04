@@ -48,12 +48,9 @@ export default function SplitEase(et1, et2, opts) {
   }
   if (et1 !== undefined && et1 < 0) throw new RangeError(`SplitEase: ease-in ratio must be > 0; received ${et1}`);
   if (et2 !== undefined && et2 < 0) throw new RangeError(`SplitEase: ease-out ratio must be > 0; received ${et2}`);
-  if (et1 !== undefined && typeof et1 !== 'number')
-    throw new TypeError(`SplitEase: ease-in ratio must be a number; received ${et1}`);
-  if (et2 !== undefined && typeof et2 !== 'number')
-    throw new TypeError(`SplitEase: ease-out ratio must be a number; received ${et2}`);
-  if (opts !== undefined && !isPojo(opts))
-    throw new TypeError(`SplitEase: options must be a plain object; received ${opts}`);
+  if (et1 !== undefined && typeof et1 !== 'number') throw new TypeError(`SplitEase: ease-in ratio must be a number; received ${et1}`);
+  if (et2 !== undefined && typeof et2 !== 'number') throw new TypeError(`SplitEase: ease-out ratio must be a number; received ${et2}`);
+  if (opts !== undefined && !isPojo(opts)) throw new TypeError(`SplitEase: options must be a plain object; received ${opts}`);
 
   et1 = et1 === undefined ? 0.5 : et1;
   et2 = et2 === undefined ? Math.max(1 - et1, 0) : et2;
@@ -71,7 +68,7 @@ export default function SplitEase(et1, et2, opts) {
 
   const { pow, sin } = opts;
   if (pow && pow < 1) throw new RangeError(`SplitEase: pow parameter must be >= 1; received ${pow}`);
-  if (pow && pow > 6) console.warn(`SplitEase: pow parameter is > 6; curve is extreme beyond this point!`);
+  if (pow && pow > 5) console.warn(`SplitEase: pow parameter is > 5; curve is extreme beyond this point!`);
   const curve = sin ? cosine : power;
   const p = sin ? Math.PI / 2 : pow;
   const ev1 = et1 > 0 ? 1 / (p / et1 - (p - 1) * (et2 / et1 + 1)) : 0;

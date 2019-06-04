@@ -1,6 +1,6 @@
 {
   "name": "split-ease",
-  "version": "1.0.0",
+  "version": "0.9.9",
   "description": "JavaScript easing/interpolation function with infinitely independently variable in/out timing and curvature",
   "files": [
     "dist/*"
@@ -16,8 +16,11 @@
     "algorithm",
     "javascript"
   ],
-  "homepage": "https://split-ease.js.org/",
-  "repository": "https://github.com/lunelson/split-ease/",
+  "homepage": "https://split-ease.netlify.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lunelson/split-ease.git"
+  },
   "bugs": "https://github.com/lunelson/split-ease/issues",
   "license": "ISC",
   "author": "Lu Nelson <hello@lunelson.xyz> (http://lunelson.xyz/)",
@@ -30,20 +33,13 @@
   "unpkg": "dist/split-ease.umd.js",
   "scripts": {
     "bundle": "npx microbundle --name=SplitEase && npx auto-changelog",
-    "publish": "npx np",
+    "publish": "npm run bundle && npx np",
     "start": "penny serve web",
     "test": "jest"
   },
   "devDependencies": {
     "@lunelson/dogfood": "^1.0.2",
-    "@pika/pack": "^0.3.7",
-    "@pika/plugin-build-node": "^0.4.0",
-    "@pika/plugin-build-types": "^0.4.0",
-    "@pika/plugin-build-web": "^0.4.0",
-    "@pika/plugin-standard-pkg": "^0.4.0",
     "@types/jest": "^24.0.13",
-    "ava": "^1.4.1",
-    "babel-jest": "^24.8.0",
     "eases": "^1.0.8",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
@@ -57,27 +53,5 @@
     "jest": "^24.8.0",
     "tiny-throttle": "^1.0.1"
   },
-  "browserslist": ">1%",
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-standard-pkg",
-        {
-          "exclude": [
-            "__quokka__/**/*",
-            "__tests__/**/*"
-          ]
-        }
-      ],
-      [
-        "@pika/plugin-build-node"
-      ],
-      [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-types"
-      ]
-    ]
-  }
+  "browserslist": ">1%"
 }
