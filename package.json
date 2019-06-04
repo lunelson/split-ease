@@ -1,6 +1,6 @@
 {
   "name": "split-ease",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript easing/interpolation function with infinitely independently variable in/out timing and curvature",
   "files": [
     "dist/*"
@@ -22,7 +22,7 @@
     "url": "https://github.com/lunelson/split-ease.git"
   },
   "bugs": "https://github.com/lunelson/split-ease/issues",
-  "license": "ISC",
+  "license": "BSD-3-Clause",
   "author": "Lu Nelson <hello@lunelson.xyz> (http://lunelson.xyz/)",
   "esnext": "src/split-ease.js",
   "source": "src/split-ease.js",
