@@ -53,5 +53,10 @@
     "jest": "^24.8.0",
     "tiny-throttle": "^1.0.1"
   },
-  "browserslist": ">1%"
+  "browserslist": ">1%",
+  "release-it": {
+    "github": {
+      "release": true
+    }
+  }
 }
