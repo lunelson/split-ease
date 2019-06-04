@@ -3,7 +3,8 @@
     "es6": true,
     "node": true,
     "commonjs": true,
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   },
   "parserOptions": {
     "sourceType": "module",
@@ -14,14 +15,15 @@
   },
   "plugins": [
     "import",
+    "jest",
     "vue",
-    "ava",
     "prettier"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:jest/recommended",
     "plugin:vue/recommended",
     "prettier",
     "prettier/vue"
