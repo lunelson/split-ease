@@ -1,6 +1,6 @@
 {
   "name": "split-ease",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JavaScript easing/interpolation function with infinitely independently variable in/out timing and curvature",
   "files": [
     "dist/*"
