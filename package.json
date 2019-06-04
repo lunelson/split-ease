@@ -35,6 +35,7 @@
     "bundle": "npx microbundle --name=SplitEase",
     "publish": "npx release-it",
     "start": "penny serve web",
+    "build": "penny build web temp",
     "test": "jest"
   },
   "devDependencies": {

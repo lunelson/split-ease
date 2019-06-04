@@ -19,7 +19,7 @@ For an __interactive visualisation__ of its simple numeric API [see the homepage
 
 <p>
   <a href="https://split-ease.netlify.com">
-    <img src="web/assets/feature2.gif" width="100%" alt="SplitEase.js Logo">
+    <img src="web/assets/feature3.gif" width="100%" alt="SplitEase.js Logo">
   </a>
 </p>
 

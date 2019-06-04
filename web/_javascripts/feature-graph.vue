@@ -58,14 +58,16 @@
         .code
           .stack.a-center
             .call.f-mono.strong {{ fnSignature }}
-        figcaption.f-mono-xs Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vestibulum id ligula porta felis euismod semper.
+        figcaption.f-mono-xs SplitEase is a higher order function that accepts one or two numeric arguments, representing the ease in/out midpoint or separate in and out ratios, plus options for curve type and exponent. It returns a standard easing function which transforms a progress value #[strong t] in a range from #[strong 0] to #[strong 1].
 
 </template>
 <script>
+import { TweenMax, Ease, CSSPlugin, TimelineMax } from 'gsap/all';
+
 import SplitEase from '../../';
 import { easeGraph } from './graphing.js';
 import draw from './draw';
-import { TweenMax, Ease, CSSPlugin, TimelineMax } from 'gsap/all';
+
 const keepGsap = [CSSPlugin, Ease];
 import { debounce } from 'tiny-throttle';
 
@@ -91,9 +93,7 @@ export default {
       return { transform: `translateY(${(1 - this.progress) * 100}%)` };
     },
     fnSignature() {
-      return `SplitEase(${this.easeIn.toFixed(2)}${this.pattern == 'split' ? this.fnArg2 : ''}${
-        this.power != 2 || this.curve == 'sin' ? this.fnOpts : ''
-      })`;
+      return `SplitEase(${this.easeIn.toFixed(2)}${this.pattern == 'split' ? this.fnArg2 : ''}${this.power != 2 || this.curve == 'sin' ? this.fnOpts : ''})`;
     },
     fnArg2() {
       return `, ${this.easeOut.toFixed(2)}`;
@@ -129,22 +129,20 @@ export default {
       return SplitEase(...args, opts);
     },
   },
-  methods: {
-    draw,
-    resetPattern() {},
-    resetCurve() {
-      this.pattern = 'split';
-      this.easeIn = 0.33;
-      this.easeOut = 0.33;
-      this.curve = 'pow';
-      this.power = 2;
+  watch: {
+    pattern(newPattern) {
+      if (newPattern == 'point') {
+        const diff = 1 - this.easeIn - this.easeOut;
+        this.easeIn += diff / 2;
+        this.easeOut = 1 - this.easeIn;
+      }
     },
-    setFeatureCanvas() {
-      let { width, height } = this.$refs['feature'].getBoundingClientRect();
-      width *= this.dpr;
-      height *= this.dpr;
-      Object.assign(this.canvas, { width, height });
+    easeFn() {
       this.draw();
+      this.demo();
+    },
+    duration() {
+      this.demo();
     },
   },
   created() {
@@ -173,20 +171,22 @@ export default {
     window.addEventListener('resize', this.setFeatureCanvas);
     this.setFeatureCanvas();
   },
-  watch: {
-    pattern(newPattern) {
-      if (newPattern == 'point') {
-        const diff = 1 - this.easeIn - this.easeOut;
-        this.easeIn += diff / 2;
-        this.easeOut = 1 - this.easeIn;
-      }
+  methods: {
+    draw,
+    resetPattern() {},
+    resetCurve() {
+      this.pattern = 'split';
+      this.easeIn = 0.33;
+      this.easeOut = 0.33;
+      this.curve = 'pow';
+      this.power = 2;
     },
-    easeFn() {
+    setFeatureCanvas() {
+      let { width, height } = this.$refs['feature'].getBoundingClientRect();
+      width *= this.dpr;
+      height *= this.dpr;
+      Object.assign(this.canvas, { width, height });
       this.draw();
-      this.demo();
-    },
-    duration() {
-      this.demo();
     },
   },
 };

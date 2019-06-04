@@ -5,9 +5,14 @@ block main
 
     #feature-graph
 
-    #article.span-8
+    //- #article.span-8
       .plain-m
         :markdown
-          Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.
-          Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec id elit non mi porta gravida at eget metus. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+
+          ### What is this all about
+
+          Most strictly-timed (i.e. not simulation-based) animation on the web makes use of interpolation (easing) functions originally popularized by [Robert Penner](http://robertpenner.com/easing/) in his [2002 book on programming Flash MX](http://robertpenner.com/profmx/). This book proposed 10 curve-types (Sine, Quad, Cubic, Quart, Quint, Exp, Back, Circ, Elastic, Bounce) times 3 variations (easeIn, easeOut and easeInOut), to offer [30 different patterns of movement](https://easings.net/en).
+
+          SplitEase takes the most common of these functions—the Sine and Power (Quad, Cubic, Quart, Quint) curves—and composes their underlying maths in a way that makes their ease-in/-out/-in-out proportions and their power curvature continuously independently variable.
+
+          Feedback or questions? [Ping me](https://twitter.com/lunelson).

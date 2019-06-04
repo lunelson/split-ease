@@ -3,4 +3,5 @@
 .prettierrc.yaml
 penny.config.js
 src
+temp
 web
