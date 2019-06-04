@@ -32,8 +32,8 @@
   "umd:main": "dist/split-ease.umd.js",
   "unpkg": "dist/split-ease.umd.js",
   "scripts": {
-    "bundle": "npx microbundle --name=SplitEase && npx auto-changelog",
-    "publish": "npm run bundle && npx np",
+    "bundle": "npx microbundle --name=SplitEase",
+    "publish": "npx release-it",
     "start": "penny serve web",
     "test": "jest"
   },
