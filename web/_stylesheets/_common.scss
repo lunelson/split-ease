@@ -22,8 +22,8 @@ $root: (
   ),
   outer-top: 2rem,
   outer-bottom: 2rem,
-  outer-right: lerp((20rem: 1.5rem, 64rem: $outer-x-max)),
-  outer-left:  lerp((20rem: 1.5rem, 64rem: $outer-x-max)),
+  outer-right: 1.5rem,
+  outer-left:  1.5rem,
   font-mods: (
     sans: (
       xs: 14px,
@@ -51,6 +51,8 @@ $media: (
   s: (
     grid-columns: 8,
     breakpoint: 32em,
+    outer-right: lerp((20rem: 2rem, 64rem: $outer-x-max)),
+    outer-left:  lerp((20rem: 2rem, 64rem: $outer-x-max)),
   ),
   m: (
     breakpoint: 40em,

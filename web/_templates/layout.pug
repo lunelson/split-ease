@@ -13,9 +13,12 @@ html(lang="en")
     meta(itemprop='description' content=$data.social.description)
     meta(itemprop='image' content=$data.social.image)
     //- twitter
-    meta(name='twitter:card' content=$data.social.description)
-    meta(name='twitter:site' content=$data.social.twitter)
+    meta(name='twitter:card' content='summary')
     meta(name='twitter:creator' content=$data.social.twitter)
+    meta(name='twitter:url' content=$data.social.url)
+    meta(name='twitter:title' content=$data.social.title)
+    meta(name='twitter:description', content=$data.social.description)
+    meta(name='twitter:image' content=$data.social.image)
     //- opengraph
     meta(property='og:type' content=$data.social.type)
     meta(property='og:url' content=$data.social.url)
@@ -40,9 +43,11 @@ html(lang="en")
             h2.f-sans-xl The curve with a beginning, middle and end.
             .plain-l
               :markdown
-                SplitEase.js is a JavaScript function which offers animators and creative coders a means to compose separately timed variable __acceleration__, __constant-speed__ and __deceleration__ segments in a single continous interpolation. It weighs less than 1k. Use the controls below to visualize the API.
+                SplitEase.js is a JavaScript function which offers animators and creative coders a means to compose separately timed variable __acceleration__, __constant-speed__ and __deceleration__ segments in a single continous interpolation. It weighs _less than 1k_.
 
-                [Star / Fork it on Github](//github.com/lunelson/split-ease), or [ask me about it on Twitter](//twitter.com/lunelson).
+                Use the controls below to visualize the API.
+
+                [Star / Fork it on Github](//github.com/lunelson/split-ease), or [ask me about it on Twitter](//twitter.com/lunelson) 😄.
 
             //- p.f-sans-l
               a.link(href='//github.com/lunelson/split-ease')
