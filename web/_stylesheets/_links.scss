@@ -1,0 +1,74 @@
+// anchor quasi-reset
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+  font-weight: normal;
+  &:focus, &:hover, &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+//  _ _       _
+// | (_)     | |
+// | |_ _ __ | | __
+// | | | '_ \| |/ /
+// | | | | | |   <
+// |_|_|_| |_|_|\_\
+
+a,
+span, //?
+button {
+  @at-root #{selector-unify(&, base-class('link'))} {
+    display: inline;
+    vertical-align: baseline;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    // background: none;
+
+    // .link, .link-inner
+    &:not(.link-outer):not(.link-btn), & .link-inner {
+      // font-weight: bold;
+    }
+
+    // .link
+    &:not(.link-outer):not(.link-btn) {
+      &:focus, &:hover, &:active {
+        text-decoration: underline;
+      }
+      &.focus-visible {
+        // outline: 0;
+        box-shadow:  0 0 0 3px #cdcdcd; // focus ring color
+      }
+    }
+
+    // .link-outer
+    &.link-outer, &.link-btn {
+      display: flex;
+      font-weight: inherit;
+
+      // .link-outer:hover/active/focus
+      &:hover,
+      &:active,
+      &:focus {
+
+        // .link-inner, .link-hover states
+        .link-inner,
+        .link-hover {
+          text-decoration: underline;
+        }
+      }
+      &.focus-visible {
+
+        // .link-focus state
+        .link-focus, .link-inner {
+          // outline: 0;
+          box-shadow:  0 0 0 3px #cdcdcd; // focus ring color
+        }
+      }
+    }
+
+  }
+}

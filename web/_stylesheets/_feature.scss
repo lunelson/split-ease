@@ -9,6 +9,17 @@
     z-index: -1;
   }
 
+  .controls .label {
+    @include m(null,s) {
+      display: none;
+    }
+  }
+  .progress .label {
+    @include m(null,m) {
+      display: none;
+    }
+  }
+
   .progress {
     color: red;
     position: absolute;
@@ -19,7 +30,7 @@
     .marker {
       position: absolute;
       width: 100%;
-      max-width: 200px;
+      // max-width: 200px;
       height: calc(100% - 20px);
       top: 6px;
       left: 0;

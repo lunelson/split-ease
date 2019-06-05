@@ -32,16 +32,35 @@ html(lang="en")
 
     #page.stack-xl.clip
       header.wrap-last.frame.frame-top
-        .span-9
+        .span-10
+          //- .stack-xl
           .stack-l
             img(src='assets/logo.svg' alt='SplitEase.js Logo' width='80%')
             h1.f-sans-xxl SplitEase.js
             h2.f-sans-xl The curve with a beginning, middle and end.
             .plain-l
               :markdown
-                SplitEase.js is a JavaScript function which offers animators and creative coders a means to compose separately timed variable __acceleration__, __constant-speed__ and __deceleration__ segments in a single continous interpolation. It weighs less than 1k.
+                SplitEase.js is a JavaScript function which offers animators and creative coders a means to compose separately timed variable __acceleration__, __constant-speed__ and __deceleration__ segments in a single continous interpolation. It weighs less than 1k. Use the controls below to visualize the API.
 
-                [Star/Fork it on Github](https://github.com/lunelson/split-ease).
+                [Star / Fork it on Github](//github.com/lunelson/split-ease), or [ask me about it on Twitter](//twitter.com/lunelson).
+
+            //- p.f-sans-l
+              a.link(href='//github.com/lunelson/split-ease')
+                +icon('github').f-sans-xl
+                span.link-inner Star / fork the repo on Github
+              a.link(href='//twitter.com/lunelson')
+                +icon('twitter').f-sans-xl
+                span.link-inner Ask me about it
+
+            //- .stop.f-sans-m
+              .flow-xs
+                a.link-outer.chain-xxs.w-auto(href='//github.com/lunelson/split-ease')
+                  +icon('github').f-sans-xl
+                  span.link-inner Star / fork the repo
+                a.link-outer.chain-xxs.w-auto(href='//twitter.com/lunelson')
+                  +icon('twitter').f-sans-xl
+                  span.link-inner Ask me about it
+
       main.wrap-last.frame
         block main
       footer.wrap-last.frame.frame-bottom

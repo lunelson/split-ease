@@ -15,11 +15,11 @@
 
 SplitEase.js is a JavaScript function which offers animators and creative coders a means to compose separately timed variable __acceleration__, __constant-speed__ and __deceleration__ segments in a single continous interpolation. It weighs less than 1k.
 
-For an __interactive visualisation__ of its simple numeric API [see the homepage](https://split-ease.netlify.com).
+To try the following __interactive visualisation__ of its simple numeric API [see the homepage](https://split-ease.netlify.com).
 
 <p>
   <a href="https://split-ease.netlify.com">
-    <img src="web/assets/feature3.gif" width="100%" alt="SplitEase.js Logo">
+    <img src="web/assets/feature.gif" width="100%" alt="SplitEase.js Logo">
   </a>
 </p>
 
@@ -62,4 +62,4 @@ Feedback or questions? [Ping me](https://twitter.com/lunelson).
 
 ## Acknowledgements
 
-[Robert Penner](http://robertpenner.com/easing/)
+[Robert Penner](http://robertpenner.com/easing/).

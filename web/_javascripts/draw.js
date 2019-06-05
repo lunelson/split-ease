@@ -1,4 +1,4 @@
-
+import Media from './media';
 
 function easeGraph(ctx, dpr, easeFn, x, y, width, height, speedStyle, accelStyle) {
   ctx.save();
@@ -30,7 +30,7 @@ function easeGraph(ctx, dpr, easeFn, x, y, width, height, speedStyle, accelStyle
   ctx.strokeStyle = accelStyle;
   ctx.beginPath();
   for (let s = 0; s < width; s++) {
-    currPoint = [s, slopes[s] / maxSlope * ACCEL_GRAPH_HEIGHT * height];
+    currPoint = [s, (slopes[s] / maxSlope) * ACCEL_GRAPH_HEIGHT * height];
     ctx[s == 0 ? 'moveTo' : 'lineTo'](...currPoint);
   }
   ctx.stroke();
@@ -76,43 +76,25 @@ export default function draw() {
   ctx.strokeStyle = '#00AAFF';
   ctx.lineWidth = 2 * dpr;
 
-  // fill acceleration / deceleration labels
-  const easeInStr = `Acceleration ${(easeIn * duration).toFixed(0)} ms`;
-  const easeOutStr = `Deceleration ${(easeOut * duration).toFixed(0)} ms`;
-  const easeInStrWidth = ctx.measureText(easeInStr).width;
-  const easeOutStrWidth = ctx.measureText(easeOutStr).width;
-  const easeInLabelPosn = Math.max(
-    inset,
-    Math.min(
-      width - easeOutStrWidth - easeInStrWidth - inset * 5,
-      easeIn * (width - inset * 2) - easeInStrWidth - inset),
-  );
-  const easeInLabelStop = Math.max(
-    easeInStrWidth + inset * 3,
-    Math.min(
-      width - easeOutStrWidth - inset * 3,
-      easeIn * (width - inset * 2) + inset),
-  );
-  const easeOutLabelPosn = Math.min(
-    width - inset - easeOutStrWidth,
-    Math.max(
-      easeInStrWidth + inset * 5,
-      (1 - easeOut) * (width - inset * 2) + inset * 3),
-  );
-  const easeOutLabelStop = Math.min(
-    width - easeOutStrWidth - inset * 3,
-    Math.max(
-      easeInStrWidth + inset * 3,
-      (1 - easeOut) * (width - inset * 2) + inset),
-  );
-  ctx.fillText(easeInStr, easeInLabelPosn, labelHeight - 4 * dpr);
-  ctx.fillText(easeOutStr, easeOutLabelPosn, labelHeight - 4 * dpr);
-  ctx.beginPath();
-  ctx.moveTo(easeInLabelStop, 5 * dpr);
-  ctx.lineTo(easeInLabelStop, 15 * dpr);
-  ctx.moveTo(easeOutLabelStop, 5 * dpr);
-  ctx.lineTo(easeOutLabelStop, 15 * dpr);
-  ctx.stroke();
+  if (Media.isAbove('m')) {
+    // fill acceleration / deceleration labels
+    const easeInStr = `Acceleration ${(easeIn * duration).toFixed(0)} ms`;
+    const easeOutStr = `Deceleration ${(easeOut * duration).toFixed(0)} ms`;
+    const easeInStrWidth = ctx.measureText(easeInStr).width;
+    const easeOutStrWidth = ctx.measureText(easeOutStr).width;
+    const easeInLabelPosn = Math.max(inset, Math.min(width - easeOutStrWidth - easeInStrWidth - inset * 5, easeIn * (width - inset * 2) - easeInStrWidth - inset));
+    const easeInLabelStop = Math.max(easeInStrWidth + inset * 3, Math.min(width - easeOutStrWidth - inset * 3, easeIn * (width - inset * 2) + inset));
+    const easeOutLabelPosn = Math.min(width - inset - easeOutStrWidth, Math.max(easeInStrWidth + inset * 5, (1 - easeOut) * (width - inset * 2) + inset * 3));
+    const easeOutLabelStop = Math.min(width - easeOutStrWidth - inset * 3, Math.max(easeInStrWidth + inset * 3, (1 - easeOut) * (width - inset * 2) + inset));
+    ctx.fillText(easeInStr, easeInLabelPosn, labelHeight - 4 * dpr);
+    ctx.fillText(easeOutStr, easeOutLabelPosn, labelHeight - 4 * dpr);
+    ctx.beginPath();
+    ctx.moveTo(easeInLabelStop, 5 * dpr);
+    ctx.lineTo(easeInLabelStop, 15 * dpr);
+    ctx.moveTo(easeOutLabelStop, 5 * dpr);
+    ctx.lineTo(easeOutLabelStop, 15 * dpr);
+    ctx.stroke();
+  }
 
   ctx.beginPath();
   ctx.setLineDash([10 * dpr, 20 * dpr]);
@@ -129,4 +111,4 @@ export default function draw() {
 
   // restore
   ctx.restore();
-};
+}

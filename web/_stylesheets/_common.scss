@@ -5,41 +5,41 @@
 @import '@lunelson/sass-u/index';
 @import '@lunelson/homework/index';
 
-$outer-x-max: 4rem;
+$outer-x-max: 5rem;
 
 $root: (
   grid-columns: 6,
   inner-x: 2rem,
   inner-y: 2rem,
   inner-mods: (
-    xxs: 0.3,
+    xxs: 0.25,
     xs: 0.5,
-    s: 0.8,
+    s: 0.75,
     m: 1,
-    l: 1.6,
-    xl: 2,
-    xxl: 3.2,
+    l: 1.25,
+    xl: 1.5,
+    xxl: 1.75,
   ),
-  // outer-top: lerp((20rem: 1rem, 64rem: $outer-y-max)),
-  // outer-bottom: lerp((20rem: 1rem, 64rem: $outer-y-max)),
-  outer-right: lerp((20rem: 1rem, 64rem: $outer-x-max)),
-  outer-left:  lerp((20rem: 1rem, 64rem: $outer-x-max)),
+  outer-top: 2rem,
+  outer-bottom: 2rem,
+  outer-right: lerp((20rem: 1.5rem, 64rem: $outer-x-max)),
+  outer-left:  lerp((20rem: 1.5rem, 64rem: $outer-x-max)),
   font-mods: (
     sans: (
       xs: 14px,
       s: 16px,
       m: 18px,
-      l: 24px,
-      xl: 35px,
-      xxl: 70px,
+      l: 20px,
+      xl: 30px,
+      xxl: 40px,
     ),
     mono: (
       xs: 14px,
       s: 16px,
       m: 18px,
-      l: 24px,
-      xl: 35px,
-      xxl: 70px,
+      l: 20px,
+      xl: 30px,
+      xxl: 40px,
     ),
   )
 );
@@ -55,6 +55,35 @@ $media: (
   m: (
     breakpoint: 40em,
     grid-columns: 12,
+    outer-top: 3rem,
+    outer-bottom: 3rem,
+    font-mods: (
+      sans: (
+        xs: 14px,
+        s: 16px,
+        m: 18px,
+        l: 24px,
+        xl: 35px,
+        xxl: 70px,
+      ),
+      mono: (
+        xs: 14px,
+        s: 16px,
+        m: 18px,
+        l: 24px,
+        xl: 35px,
+        xxl: 70px,
+      ),
+    ),
+    inner-mods: (
+      xxs: 0.3,
+      xs: 0.5,
+      s: 0.8,
+      m: 1,
+      l: 1.6,
+      xl: 2,
+      xxl: 3.2,
+    ),
   ),
   l: (
     breakpoint: 64em,

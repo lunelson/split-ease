@@ -1,0 +1,69 @@
+//  _
+// (_)
+//  _  ___ ___  _ __  ___
+// | |/ __/ _ \| '_ \/ __|
+// | | (_| (_) | | | \__ \
+// |_|\___\___/|_| |_|___/
+
+
+#{base-class('icon')} {
+  > svg {
+    overflow: visible;
+    flex: 0 0 auto;
+    align-self: center;
+    height: auto;
+    transform: inherit;
+  }
+
+  // inline-block
+
+  @at-root #{selector-unify(&, span)} {
+    $size: 1em;
+    display: inline-block;
+    vertical-align: middle;
+    height: 1em;
+    width: $size;
+    & > svg {
+      height: $size;
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  // block
+
+  @at-root #{selector-unify(&, 'div, span.d-block')} {
+    width: 100%;
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+    }
+    & > svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// // SIZES
+
+// @each $s, $size in $icon-sizes {
+//   span.icon-#{$s} {
+//     width: $size * 1px !important;
+//     & > svg {
+//       height: $size * 1px !important;
+//       top: calc((1em - #{$size}px)/2); // 0.8 is rough approx of char vs em box
+//     }
+//   }
+//   div.icon-#{$s}, span.icon-#{$s}.d-block {
+
+//     width: $size * 1px !important;
+//     height: $size * 1px !important;
+//   }
+// }

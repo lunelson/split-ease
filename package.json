@@ -52,6 +52,7 @@
     "gsap": "^2.1.3",
     "input-range-scss": "^1.5.1",
     "jest": "^24.8.0",
+    "purgecss": "^1.3.0",
     "tiny-throttle": "^1.0.1"
   },
   "browserslist": ">1%",

@@ -11,12 +11,12 @@
             .marker(ref='marker')
               .label.f-mono-xs.strong {{ progStr }}
       canvas(ref='canvas')
-      form#controls(@submit.prevent).stack-xs.mt-xs
+      form.controls(@submit.prevent).stack-xs.mt-xs
 
         .stack-xxs
-          .d-flex.ai-center
-            .label.f-sans-xs.strong Ease-In/-Out Timing
-            .radio.f-sans-xs.strong.ml-auto
+          .d-flex.ai-center.jc-center
+            .label.f-sans-xs.strong.mr-auto Ease-In/-Out Timing
+            .radio.f-sans-xs.strong
               input.vhide(id='radio-pattern-split', type='radio', value='split', v-model='pattern')
               label(for='radio-pattern-split') Split
               input.vhide(id='check-pattern', type='checkbox', true-value='split', false-value='point', v-model='pattern')
@@ -37,9 +37,9 @@
             input(id="range-ease2", type="range", :disabled="pattern=='point'", min="0.000", max="1.000", step="0.001", v-model.number="_easeOut", style="direction: rtl")
 
         .stack-xxs
-          .d-flex.ai-center
-            .label.f-sans-xs.strong Easing Curve
-            .radio.f-sans-xs.strong.ml-auto
+          .d-flex.ai-center.jc-center
+            .label.f-sans-xs.strong.mr-auto Easing Curve
+            .radio.f-sans-xs.strong
               input.vhide(id='radio-curve-pow', type='radio', value='pow', v-model='curve')
               label(for='radio-curve-pow') Power {{ power.toFixed(2) }}
               input.vhide(id='check-curve', type='checkbox', true-value='pow', false-value='sin', v-model='curve')
@@ -63,13 +63,13 @@
 </template>
 <script>
 import { TweenMax, Ease, CSSPlugin, TimelineMax } from 'gsap/all';
+import { debounce } from 'tiny-throttle';
 
 import SplitEase from '../../';
 import { easeGraph } from './graphing.js';
 import draw from './draw';
 
 const keepGsap = [CSSPlugin, Ease];
-import { debounce } from 'tiny-throttle';
 
 export default {
   data() {

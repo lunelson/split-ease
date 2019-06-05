@@ -19,8 +19,8 @@
     }
   }
   .call {
-    $min-fz: 18px;
-    $max-fz: 36px;
+    $min-fz: 16px;
+    $max-fz: 32px;
     @include m(null, xs) {
       font-size: $min-fz;
     }

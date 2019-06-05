@@ -20,6 +20,16 @@ mixin ph({ aspect = 1.5, height, color = 'rgba(0,0,0,0.1)', text } = {})
         .a-center= text
 
 
+mixin icon(name, isBlock = false)
+  #{isBlock?'div':'span'}.icon&attributes(attributes)
+    svg
+      use(xlink:href=`/assets/icons.svg#${name}`)
+
+//- mixin icon(name, size, isBlock = false)
+//-   - size = size || _.last(name.split('-'));
+//-   #{isBlock?'div':'span'}(class=size?`icon icon-${size}`:'icon')&attributes(attributes)
+//-     svg: use(xlink:href=`/assets/icons.svg#icon-${name}`)
+
 //-
 
 
