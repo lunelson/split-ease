@@ -58,7 +58,7 @@
         .code
           .stack.a-center
             .call.f-mono.strong {{ fnSignature }}
-        figcaption.f-mono-xs SplitEase is a higher order function that accepts one or two numeric arguments, representing the ease in/out midpoint or separate in and out ratios, plus options for curve type and exponent. It returns a standard easing function which transforms a progress value #[strong t] in a range from #[strong 0] to #[strong 1].
+        figcaption.f-mono-xs SplitEase is a higher order function: it accepts one or two numeric arguments, either (a) the ease in/out midpoint or (b) the in and out ratios vs the duration, as well as options for curve type and exponent. It returns a standard easing function which transforms a progress/time value #[strong t] in the range from #[strong 0] to #[strong 1].
 
 </template>
 <script>
