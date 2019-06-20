@@ -1,6 +1,7 @@
+author: "Lu Nelson"
 twitter: "@lunelson"
 type: "product"
-description: The easing curve with a beginning, middle and end.
-url: http://split-ease.netlify.com/
+description: The JavaScript easing curve with a beginning, middle and end.
+url: http://split-ease.js.org/
 title: Split-Ease.JS
-image: http://split-ease.netlify.com/assets/og-image2.png
+image: http://split-ease.js.org/assets/og-image2.png
